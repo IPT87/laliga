@@ -12,7 +12,7 @@
 	<artifactId>laliga</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>laliga</name>
-	<description>Spring Boot footbal project</description>
+	<description>Spring Boot football project</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -36,11 +36,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
 		<dependency>

@@ -2,6 +2,7 @@ package bg.exam.laliga.controllers;
 
 
 import bg.exam.laliga.domain.dto.UserRegisterFormDto;
+import bg.exam.laliga.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,7 +16,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/users")
 public class RegistrationController {
 
+    private final UserService userService;
+
     public static final String BINDING_RESULT_PATH = "org.springframework.validation.BindingResult.";
+
+    public RegistrationController(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping("/register")
     public String getRegister() {
         return "register";
@@ -31,6 +39,8 @@ public class RegistrationController {
 
             return "redirect:register";
         }
+
+        this.userService.registerUser(userRegisterInfo);
 
         return "redirect:login";
     }

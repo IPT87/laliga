@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
@@ -27,7 +30,10 @@ public class UserEntity {
     @Column
     private String email;
 
-    @Column
+    @Column(name = "is_subscribed")
     private boolean isSubscribed;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<UserRoleEntity> roles = new ArrayList<>();
 
 }

@@ -12,13 +12,6 @@ spring:
   sql:
     init:
       mode: always
-
-mail:
-  host: localhost
-  port: 1025
-  username: "admin@example.com"
-  password: ""
-
-laliga:
-  admin:
-    defaultpass: ${DEFAULT_PASS:test}
+logging:
+  level:
+    org.springframework.security: TRACE

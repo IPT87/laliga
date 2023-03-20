@@ -43,6 +43,29 @@
       </div>
     </div>
 
+    <div class="form-group col-md-6 mb-3">
+
+      <label for="confirmPassword"
+             class="text-white font-weight-bold">
+        Email
+      </label>
+
+      <input id="email"
+             name="email"
+             type="email"
+             min="2"
+             max="20"
+             class="form-control"
+             placeholder="Email"
+             th:value="*{email}"/>
+
+      <p th:if="${#fields.hasErrors('email')}"
+         class="errors alert alert-danger">
+        Email is required.
+      </p>
+
+    </div>
+
     <div class="row">
       <div class="form-group col-md-6 mb-3">
         <label for="password"
@@ -85,6 +108,12 @@
         </p>
 
       </div>
+
+      <div class="row">
+          <input type="checkbox" id="isSubscribed" name="isSubscribed">
+          <label for="isSubscribed">Do You want to subscribe to La Liga news?</label>
+      </div>
+
     </div>
 
     <div class="row">

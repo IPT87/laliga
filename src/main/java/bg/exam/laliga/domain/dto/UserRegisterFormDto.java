@@ -19,6 +19,7 @@ public class UserRegisterFormDto {
 
     @NotNull
     @Email
+    @Size(min = 5, max = 20)
     private String email;
 
     @NotNull
@@ -32,5 +33,7 @@ public class UserRegisterFormDto {
     @NotNull
     @Size(min = 5, max = 20)
     private String username;
+
+    private boolean isSubscribed;
 
 }
