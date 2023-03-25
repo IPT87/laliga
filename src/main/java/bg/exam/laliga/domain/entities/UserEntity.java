@@ -33,7 +33,7 @@ public class UserEntity {
     @Column(name = "is_subscribed")
     private boolean isSubscribed;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<UserRoleEntity> roles = new ArrayList<>();
 
 }

@@ -22,9 +22,6 @@ public class StadiumEntity {
     private String name;
 
     @Column
-    private String country;
-
-    @Column
     private String city;
 
     @Column(name = "year_of_construction")
@@ -32,5 +29,8 @@ public class StadiumEntity {
 
     @Column
     private int capacity;
+
+    @Column(name = "photo_url")
+    private String photoUrl;
 
 }

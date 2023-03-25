@@ -26,16 +26,16 @@ public class UserService {
 
     public void registerUser(UserRegisterFormDto userRegisterFormDto) {
         UserEntity userToSave = this.mapper.map(userRegisterFormDto, UserEntity.class);
-        //userToSave.setPassword(passwordEncoder.encode(userRegisterFormDto.getPassword()));
+        userToSave.setPassword(passwordEncoder.encode(userRegisterFormDto.getPassword()));
         UserRoleEntity userRoleEntity = new UserRoleEntity();
         userRoleEntity.setRole(UserRoleEnum.USER);
         userToSave.setRoles(List.of(userRoleEntity));
 
-        this.userRepository.saveAndFlush(userToSave);
+        this.userRepository.save(userToSave);
     }
 
     public UserEntity getUser(String username) {
-        return this.userRepository.getUserEntityByUsername(username).get();
+        return this.userRepository.findByUsername(username).get();
     }
 
 }

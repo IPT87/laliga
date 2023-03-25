@@ -1,125 +1,61 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 
-<head>
-  <span th:replace="~{/fragments/head}"></span>
-</head>
+<head th:replace="~{fragments/head::head}"></head>
+
 
 <body style="background-image: url('/images/registerCover.jpg')">
 
-<div>
-  <nav th:replace="~{/fragments/navigation}"></nav>
+<div th:replace="~{fragments/navigation :: navigation}">
+  Navbar
 </div>
 
 <div class="container">
-
   <h2 class="text-center text-white">Register User</h2>
-
-  <form th:method="POST"
-        th:action="@{/users/register}"
-        th:object="${userRegisterForm}"
-        class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
-
+  <form
+          th:method="POST"
+          th:action="@{/users/register}"
+          class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
     <div class="row">
       <div class="form-group col-md-6 mb-3">
-
-        <label for="username"
-               class="text-white font-weight-bold">
-          Username
-        </label>
-
-        <input id="username"
-               name="username"
-               type="text"
-               min="2"
-               max="20"
-               class="form-control"
-               placeholder="Username"
-               th:value="*{username}"/>
-        <p th:if="${#fields.hasErrors('username')}"
-           class="errors alert alert-danger">
-          Username is required.
-        </p>
+        <label for="username" class="text-white font-weight-bold">Name</label>
+        <input
+                id="username"
+                name="username"
+                type="text"
+                class="form-control"
+                placeholder="Name"/>
+      </div>
+      <div class="form-group col-md-6 mb-3">
+        <label for="email" class="text-white font-weight-bold">Email</label>
+        <input id="email"
+               name="email"
+               type="text" min="2" max="20" class="form-control"
+               placeholder="Email"/>
       </div>
     </div>
-
-    <div class="form-group col-md-6 mb-3">
-
-      <label for="confirmPassword"
-             class="text-white font-weight-bold">
-        Email
-      </label>
-
-      <input id="email"
-             name="email"
-             type="email"
-             min="2"
-             max="20"
-             class="form-control"
-             placeholder="Email"
-             th:value="*{email}"/>
-
-      <p th:if="${#fields.hasErrors('email')}"
-         class="errors alert alert-danger">
-        Email is required.
-      </p>
-
-    </div>
-
     <div class="row">
       <div class="form-group col-md-6 mb-3">
-        <label for="password"
-               class="text-white font-weight-bold">
-          Password
-        </label>
+        <label for="password" class="text-white font-weight-bold">Password</label>
         <input id="password"
                name="password"
-               type="password"
-               min="2"
-               max="20"
-               class="form-control"
-               placeholder="Password"
-               th:value="*{password}"/>
-        <p th:if="${#fields.hasErrors('password')}"
-           class="errors alert alert-danger">
-          Password is required.
-        </p>
+               type="password" min="2" max="20" class="form-control"
+               placeholder="Password"/>
       </div>
-
       <div class="form-group col-md-6 mb-3">
-
-        <label for="confirmPassword"
-               class="text-white font-weight-bold">
-          Confirm Password
-        </label>
-
+        <label for="confirmPassword" class="text-white font-weight-bold">Confirm password</label>
         <input id="confirmPassword"
                name="confirmPassword"
-               type="password"
-               min="2"
-               max="20"
-               class="form-control"
-               placeholder="Confirm password"
-               th:value="*{confirmPassword}"/>
-
-        <p th:if="${#fields.hasErrors('confirmPassword')}"
-           class="errors alert alert-danger">
-          Passwords does not match.
-        </p>
-
+               type="password" min="2" max="20" class="form-control"
+               placeholder="Confirm password"/>
       </div>
-
-      <div class="row">
-          <input type="checkbox" id="isSubscribed" name="isSubscribed">
-          <label for="isSubscribed">Do You want to subscribe to La Liga news?</label>
-      </div>
-
     </div>
 
     <div class="row">
       <div class="col col-md-4">
         <div class="button-holder d-flex">
-          <input type="submit" class="btn btn-info btn-lg" value="Register"/>
+          <input type="submit" class="btn btn-info btn-lg" value="Create account"/>
         </div>
       </div>
     </div>
@@ -127,7 +63,7 @@
 </div>
 
 <div>
-  <footer></footer>
+  <footer> </footer>
 </div>
 
 </body>

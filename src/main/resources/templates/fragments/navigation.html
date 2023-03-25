@@ -19,6 +19,25 @@
     <th:block sec:authorize="!isAuthenticated()">
       <ul class="navbar-nav mr-auto col-12 justify-content-end">
         <li class="nav-item">
+          <a class="nav-link" th:href="@{/stadiums}">Stadiums</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/teams/all}">Teams</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/players/all}">Players</a>
+        </li>
+
+
+        <li class="nav-item" sec:authorize="isAuthenticated()">
+          <form method="POST" th:action="@{/users/logout}"  class="form-inline my-2 my-lg-0 border px-3">
+            <button type="submit" name="submit" value="value" class="btn btn-link nav-link">Logout</button>
+          </form>
+
+        </li>
+        <li class="nav-item">
           <a class="nav-link" th:href="@{/users/register}">Register</a>
         </li>
 
@@ -28,18 +47,18 @@
       </ul>
     </th:block>
 
-    <th:block>
+    <th:block sec:authorize="!isAuthenticated()">
       <ul class="navbar-nav mr-auto col-12 justify-content-end">
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/brands/all}">All Brands</a>
+          <a class="nav-link" th:href="@{/stadiums}">All Stadiums</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/offers/add}">Add Offer</a>
+          <a class="nav-link" th:href="@{/teams/all}">All Teams</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/offers/all">All Offers</a>
+          <a class="nav-link" th:href="@{/players/all}">All Players</a>
         </li>
 
 

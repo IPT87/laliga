@@ -3,9 +3,9 @@ package bg.exam.laliga.config;
 import bg.exam.laliga.domain.enums.UserRoleEnum;
 import bg.exam.laliga.repositories.UserRepository;
 import bg.exam.laliga.services.ApplicationUserDetailsService;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,22 +25,22 @@ public class SecurityConfiguration {
 
         http.
                 // defines which pages will be authorized
-                        authorizeHttpRequests().
+                authorizeHttpRequests().
                 // allow access to all static files (images, CSS, js)
-                        requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
+                requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                 // the URL-s below are available for all users - logged in and anonymous
-                        requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll().
-                        //requestMatchers("/admin").hasRole(UserRoleEnum.ADMIN.name()).
+                requestMatchers("/", "/users/login", "/users/register", "/users/login-error", "/stadiums", "/stadiums/all").permitAll().
+                requestMatchers("/admin").hasRole(UserRoleEnum.ADMIN.name()).
                 anyRequest().authenticated().
                 and().
                 // configure login with HTML form
-                        formLogin().
+                formLogin().
                 loginPage("/users/login").
                 // the names of the username, password input fields in the custom login form
-                        usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
-                        passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
+                usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
+                passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
                 // where do we go after login
-                        defaultSuccessUrl("/", true).//use true argument if you always want to go there, otherwise go to previous page
+                defaultSuccessUrl("/", true).//use true argument if you always want to go there, otherwise go to previous page
                 failureForwardUrl("/users/login-error").
                 and().logout().//configure logout
                 logoutUrl("/users/logout").
