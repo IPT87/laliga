@@ -5,8 +5,8 @@
 <head></head>
 <body>
 
-<nav th:fragment="navigation" class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top" style="opacity: 0.7">
-  <a class="navbar-brand" href="/"><img alt="La Liga logo" th:src="@{/images/laLigaLogo.jpg}" class="logo" style="opacity: 0.7"></a>
+<nav th:fragment="navigation" class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top" style="opacity: 0.8">
+  <a class="navbar-brand" href="/"><img alt="La Liga logo" th:src="@{/images/laLigaLogo.jpg}" class="logo" style="opacity: 0.8"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -17,6 +17,22 @@
 
     <!-- Register and login -->
     <th:block sec:authorize="!isAuthenticated()">
+
+      <ul class="navbar-nav mr-auto col-12 justify-content-end">
+
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/users/register}">Register</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/users/login}">Login</a>
+        </li>
+
+      </ul>
+
+    </th:block>
+
+    <th:block sec:authorize="isAuthenticated()">
       <ul class="navbar-nav mr-auto col-12 justify-content-end">
         <li class="nav-item">
           <a class="nav-link" th:href="@{/stadiums}">Stadiums</a>
@@ -32,41 +48,12 @@
 
 
         <li class="nav-item" sec:authorize="isAuthenticated()">
-          <form method="POST" th:action="@{/users/logout}"  class="form-inline my-2 my-lg-0 border px-3">
-            <button type="submit" name="submit" value="value" class="btn btn-link nav-link">Logout</button>
-          </form>
-
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/users/register}">Register</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/users/login}">Login</a>
-        </li>
-      </ul>
-    </th:block>
-
-    <th:block sec:authorize="!isAuthenticated()">
-      <ul class="navbar-nav mr-auto col-12 justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/stadiums}">All Stadiums</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/teams/all}">All Teams</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/players/all}">All Players</a>
-        </li>
-
-
-        <li class="nav-item" sec:authorize="isAuthenticated()">
-          <form method="POST" th:action="@{/users/logout}"  class="form-inline my-2 my-lg-0 border px-3">
-            <button type="submit" name="submit" value="value" class="btn btn-link nav-link">Logout</button>
-          </form>
-
+          <div class="form-inline my-2 my-lg-0 px-3">
+            <div class="text-white">Welcome, <th:block sec:authentication="name"></th:block>!</div>
+            <form method="POST" th:action="@{/users/logout}"  class="form-inline my-2 my-lg-0 border px-3">
+              <input class="btn btn-link nav-link" type="submit" value="Logout">
+            </form>
+          </div>
         </li>
       </ul>
     </th:block>

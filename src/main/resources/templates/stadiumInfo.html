@@ -1,102 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head th:replace="~{/fragments/head}">
+<head th:replace="~{fragments/head::head}">
 </head>
 <body style="background-image: url('/images/stadium.jpeg')">
 
 <div>
-  <nav th:replace="~{/fragments/navigation}"></nav>
+    <nav th:replace="~{fragments/navigation :: navigation}"></nav>
 </div>
 
 <div class="container-fluid">
-  <h2 class="text-center text-white mt-5">Stadiums</h2>
-    <div id="stadiums-text" style="display: block">
-        <h3 class="text-center text-white mt-5">
-            Meet the La Liga stadiums. From the massive Camp Nou and Bernabeu to the tiny Ipurua in Eibar.
-            From the ultra-modern San Mames to the old concrete colossuses in Valencia and Sevilla.
-            Mix that with the passion of Spanish football fans, and you’ve got the perfect football cocktail.
-        </h3>
+    <h2 class="text-center text-white mt-5">Stadium: <p th:text="${stadium.name}"></p></h2>
+    <div class="d-flex flex-row bd-highlight mb-3 bg-secondary bg-gradient">
+            <div class="d-flex justify-content-evenly">
+                <h3 class="text-center text-white mt-5" th:text="${stadium.info}"></h3>
+            </div>
+            <div class="d-flex justify-content-evenly">
+                <img alt="Stadium photo" class="rounded" th:src="${stadium.photoUrl}"/>
+            </div>
     </div>
-      <table id="stadiums-table" class="table table-dark table-striped" style="display: none">
-        <thead>
-          <tr>
-            <th class="font-monospace">Name</th>
-            <th class="font-monospace">City</th>
-            <th class="font-monospace">Year of construction</th>
-            <th class="font-monospace">Capacity</th>
-          </tr>
-        </thead>
-        <tbody id="stadium-container"></tbody>
-      </table>
-      <div class="card-body">
-        <button id="stadiumsBtn" class="btn btn-light">View all stadiums</button>
-      </div>
 </div>
 
 <div>
-  <footer> </footer>
+    <footer> </footer>
 </div>
 
 </body>
-
-<script type="application/javascript">
-
-  let stadiumsBtn = document.getElementById("stadiumsBtn");
-  stadiumsBtn.addEventListener("click", getAllStadiums);
-  stadiumsBtn.addEventListener('click', showHideElements);
-
-  function getAllStadiums() {
-
-    let container = document.getElementById("stadium-container")
-    container.innerHTML = ''
-
-    let requestOptions = {
-      method: 'GET'
-    }
-
-    fetch("http://localhost:8080/stadiums/all", requestOptions)
-            .then(response => response.json())
-            .then(json => json.forEach(stadium => {
-              let row = document.createElement("tr")
-
-              let name = document.createElement("td")
-              let city = document.createElement("td")
-              let yearOfConstruction = document.createElement("td")
-              let capacity = document.createElement("td")
-              let imgContainer = document.createElement(("td"))
-              let img = document.createElement("img")
-              img.src = stadium.photoUrl
-              img.style.width = '7vw'
-              img.style.height = '7vw'
-              imgContainer.appendChild(img)
-
-              name.textContent = stadium.name
-              city.textContent = stadium.city
-              yearOfConstruction.textContent = stadium.yearOfConstruction
-              capacity.textContent = stadium.capacity
-
-              row.appendChild(name)
-              row.appendChild(city)
-              row.appendChild(yearOfConstruction)
-              row.appendChild(capacity)
-              row.appendChild(imgContainer)
-
-              container.appendChild(row)
-
-            }))
-
-  }
-
-  function showHideElements() {
-      let text = document.getElementById('stadiums-text');
-      let table = document.getElementById('stadiums-table');
-
-      text.style.display = 'none';
-      table.style.display = 'table';
-
-  }
-
-</script>
 
 </html>

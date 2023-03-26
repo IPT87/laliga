@@ -56,4 +56,13 @@ public class PlayerEntity extends BaseEntity {
     @Column(name = "double_yellow_cards")
     private int doubleYellowCards;
 
+    @Column(name = "team_name")
+    private String teamName;
+
+    @Column(name = "team_logo_url")
+    private String teamLogoUrl;
+
+    @Column
+    private int dorsal;
+
 }

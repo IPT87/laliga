@@ -22,7 +22,7 @@ public class StadiumController {
     @GetMapping
     public ModelAndView toStadium() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("stadiumInfo");
+        modelAndView.setViewName("stadiums");
 
         return modelAndView;
     }
@@ -30,6 +30,15 @@ public class StadiumController {
     @GetMapping("/all")
     public ResponseEntity<List<StadiumEntity>> allStadiums() {
         return ResponseEntity.ok(this.stadiumRepository.findAll());
+    }
+
+    @GetMapping("/{name}")
+    public ModelAndView stadiumById(@PathVariable("name") String name) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("stadiumInfo");
+        modelAndView.addObject("stadium", this.stadiumRepository.findByName(name).orElseThrow());
+
+        return modelAndView;
     }
 
 }

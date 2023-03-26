@@ -35,7 +35,7 @@ public class TeamEntity {
     @Column(name = "photo_url")
     private String photoUrl;
 
-    @Column(name = "matchesPlayed")
+    @Column(name = "matches_played")
     private int matchesPlayed;
 
     @Column(name = "matches_to_play")

@@ -30,6 +30,9 @@ public class StadiumEntity {
     @Column
     private int capacity;
 
+    @Column
+    private String info;
+
     @Column(name = "photo_url")
     private String photoUrl;
 

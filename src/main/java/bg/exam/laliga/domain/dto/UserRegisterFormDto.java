@@ -19,7 +19,7 @@ public class UserRegisterFormDto {
 
     @NotNull
     @Email
-    @Size(min = 5, max = 20)
+    @Size(min = 5, max = 30)
     private String email;
 
     @NotNull

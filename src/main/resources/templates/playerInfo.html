@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{fragments/head::head}">
+</head>
+<body style="background-image: url('/images/stadium.jpeg')">
+
+<div>
+  <nav th:replace="~{fragments/navigation :: navigation}"></nav>
+</div>
+
+<div class="container-fluid" style="gap: 5px;">
+  <div style="background-color: rgba(126, 161, 217, 0.8); margin: 5px; padding: 5px;">
+    <h2 class="text-center text-white mt-5">Player: <p th:text="${player.name} + ' ' + ${player.lastName} + ' ' + ${player.dorsal}"></p></h2>
+    <div class="d-flex flex-row bd-highlight mb-3" style="gap: 5px;">
+      <div class="d-flex justify-content-start">
+        <img alt="Player photo" class="rounded" th:src="${player.photoUrl}" width = '250vw' height = '280vw'/>
+      </div>
+      <div class="d-flex justify-content-start">
+        <img alt="Player country flag" class="rounded" th:src="${player.flagUrl}" width = '210vw' height = '120vw'/>
+      </div>
+    </div>
+    <div class="d-flex flex-row bd-highlight mb-3">
+      <div class="d-flex justify-content-start">
+        <h3 class="text-center text-white mt-5 font-monospace" th:text="${player.position}"></h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin: 15px;">
+  <table id="info-table" class="table table-striped table-light">
+    <thead>
+    <tr>
+      <th class="font-monospace">Date of birth</th>
+      <th class="font-monospace">Place of birth</th>
+      <th class="font-monospace">Height</th>
+      <th class="font-monospace">Weight</th>
+    </tr>
+    </thead>
+    <tbody id="players-info-container">
+    <tr th:each="p: ${player}">
+      <td th:text="${p.dateOfBirth}" />
+      <td th:text="${p.placeOfBirth}" />
+      <td th:text="${p.height} + ' ' + cm" />
+      <td th:text="${p.weight} + ' ' + kg" />
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="margin: 15px;">
+  <table class="table table-striped table-light">
+    <tbody>
+      <tr>
+        <td> <h3><i class="fas fa-basketball-ball"> </i>Goals</h3> </td>
+        <td> <h3><i class="fas fa-arrows-alt"></i>Assists</h3> </td>
+      </tr>
+      <tr>
+        <td> <h3 th:text="${player.goals}"></h3> </td>
+        <td> <h3 th:text="${player.assists}"></h3> </td>
+      </tr>
+      <tr>
+        <th class="font-monospace"> <h3><i class="fas fa-arrow-up"></i>Shots</h3> </th>
+        <th class="font-monospace"> <h3><i class="fas fa-compress-arrows-alt"></i>Matches played</h3> </th>
+      </tr>
+      <tr>
+        <td> <h3 th:text="${player.shots}"></h3> </td>
+        <td> <h3 th:text="${player.matchesPlayed}"></h3> </td>
+      </tr>
+      <tr>
+        <td> <h3><i class="far fa-clock"></i>Minutes</h3> </td>
+        <td> <h3><i class="fas fa-user-alt"></i>Starts</h3> </td>
+      </tr>
+      <tr>
+        <td> <h3 th:text="${player.minutes}"></h3> </td>
+        <td> <h3 th:text="${player.starts}"></h3> </td>
+      </tr>
+      <tr>
+        <td> <h3><i class="fas fa-arrows-alt-v"></i>Substitutions</h3> </td>
+        <td> <h3><i class="fas fa-band-aid"></i>Fouls</h3> </td>
+      </tr>
+      <tr>
+        <td> <h3 th:text="${player.substitutions}"></h3> </td>
+        <td> <h3 th:text="${player.fouls}"></h3> </td>
+      </tr>
+      <tr>
+        <td> <h3><i class="fab fa-periscope"></i>Penalties</h3> </td>
+        <td> <h3><i class="far fa-clone"></i>Yellow cards</h3> </td>
+      </tr>
+      <tr>
+        <td> <h3 th:text="${player.penalties}"></h3> </td>
+        <td> <h3 th:text="${player.yellowCards}"></h3> </td>
+      </tr>
+      <tr>
+        <td> <h3><i class="fas fa-clone"></i>Red cards</h3> </td>
+        <td> <h3><i class="far fa-clone"></i>Double yellow cards</h3> </td>
+      </tr>
+      <tr>
+        <td> <h3 th:text="${player.redCards}"></h3> </td>
+        <td> <h3 th:text="${player.doubleYellowCards}"></h3> </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <footer> </footer>
+</div>
+
+</body>
+
+</html>
