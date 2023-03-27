@@ -3,7 +3,7 @@
 
 <head th:replace="~{fragments/head::head}">
 </head>
-<body style="background-image: url('/images/stadium.jpeg')">
+<body style="background-image: url('/images/stadium.jpeg')" onload="getPlayerGoalsAndPasses()">
 
 <div>
   <nav th:replace="~{fragments/navigation :: navigation}"></nav>
@@ -14,15 +14,21 @@
     <h2 class="text-center text-white mt-5">Player: <p th:text="${player.name} + ' ' + ${player.lastName} + ' ' + ${player.dorsal}"></p></h2>
     <div class="d-flex flex-row bd-highlight mb-3" style="gap: 5px;">
       <div class="d-flex justify-content-start">
-        <img alt="Player photo" class="rounded" th:src="${player.photoUrl}" width = '250vw' height = '280vw'/>
+        <img alt="Player photo" class="rounded" th:src="${player.photoUrl}" width = '250vw' height = '290vw'/>
       </div>
       <div class="d-flex justify-content-start">
-        <img alt="Player country flag" class="rounded" th:src="${player.flagUrl}" width = '210vw' height = '120vw'/>
+        <img alt="Player country flag" class="rounded" th:src="${player.flagUrl}" width = '220vw' height = '120vw'/>
+      </div>
+      <div class="d-flex justify-content-end" style="margin-left: auto">
+        <img alt="Team logo" th:src="${player.teamLogoUrl}" />
       </div>
     </div>
     <div class="d-flex flex-row bd-highlight mb-3">
       <div class="d-flex justify-content-start">
         <h3 class="text-center text-white mt-5 font-monospace" th:text="${player.position}"></h3>
+      </div>
+      <div class="d-flex justify-content-end" style="margin-left: auto">
+        <h3 class="text-center text-white mt-5 font-monospace" th:text="${player.teamName}"></h3>
       </div>
     </div>
   </div>
@@ -102,11 +108,106 @@
       </tr>
     </tbody>
   </table>
+
+  <div style="background-color: rgba(229,237,250,0.9); margin: 5px; padding: 5px;">
+    <canvas id="goalsChart" style="width:100%;max-width:950px"></canvas>
+    <canvas id="assistsChart" style="width:100%;max-width:1200px"></canvas>
+  </div>
+
 </div>
 
 <div>
   <footer> </footer>
 </div>
+
+<script>
+
+  let names = [];
+  let goals = [];
+  let assists = [];
+  let barColors = ["#ec1802",
+    "#9dcec7",
+    "#03a9f4",
+    "#ff6630",
+    "#e9c89e",
+    "#22223b",
+    "#9684b1",
+    "#9a8c98",
+    "#80273d",
+    "#c9e9e4"
+  ];
+
+  let donutColors = ["#cb4031",
+    "#84e3d5",
+    "#02b0ff",
+    "#8a3c20",
+    "#c07f2d",
+    "#212149",
+    "#9d7cce",
+    "#5b3756",
+    "#9d2241",
+    "#a8bdb9"
+  ];
+
+  function getPlayerGoalsAndPasses() {
+
+    let controllerAddress = "http://localhost:8080/players/stats";
+
+    let requestOptions = {
+      method: 'GET'
+    }
+
+    fetch(controllerAddress, requestOptions)
+            .then(response => response.json())
+            .then(json => json.forEach(player => {
+              names.push(player.lastName);
+              goals.push(player.goals);
+              assists.push(player.assists);
+            })).then(loadCharts);
+
+  }
+
+  function loadCharts() {
+    let goalsChart = new Chart("goalsChart", {
+      type: "bar",
+      data: {
+        labels: names,
+        datasets: [{
+          label: 'Season 2022-2023',
+          backgroundColor: barColors,
+          data: goals
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Goals"
+        }
+      }
+    });
+
+    let asisstsChart = new Chart("assistsChart", {
+      type: "doughnut",
+      data: {
+        labels: names,
+        datasets: [{
+          backgroundColor: donutColors,
+          data: assists
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Assists"
+        }
+      }
+    });
+
+    asisstsChart.update();
+    goalsChart.update();
+  }
+
+</script>
 
 </body>
 

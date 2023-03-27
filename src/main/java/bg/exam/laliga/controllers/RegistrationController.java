@@ -6,10 +6,7 @@ import bg.exam.laliga.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -31,6 +28,7 @@ public class RegistrationController {
 
     @PostMapping("/register")
     public String postRegister(@Valid @ModelAttribute(name = "userRegisterForm") UserRegisterFormDto userRegisterInfo,
+                               @RequestParam(name = "isSubscribed", required = false) boolean isSubscribed,
                                BindingResult bindingResult,
                                RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
@@ -38,6 +36,10 @@ public class RegistrationController {
                     .addFlashAttribute(BINDING_RESULT_PATH + "userRegisterForm", bindingResult);
 
             return "redirect:register";
+        }
+
+        if (isSubscribed) {
+            userRegisterInfo.setSubscribed(true);
         }
 
         this.userService.registerUser(userRegisterInfo);

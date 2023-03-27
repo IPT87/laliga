@@ -1,7 +1,8 @@
 package bg.exam.laliga.controllers;
 
-import bg.exam.laliga.domain.entities.PlayerEntity;
+import bg.exam.laliga.domain.dto.PlayerGoalsAndPassesDto;
 import bg.exam.laliga.repositories.PlayerRepository;
+import bg.exam.laliga.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,15 +11,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @Controller
 @RequestMapping("/players")
 public class PlayerController {
 
     private final PlayerRepository playerRepository;
+    private final PlayerService playerService;
 
     @Autowired
-    public PlayerController(PlayerRepository playerRepository) {
+    public PlayerController(PlayerRepository playerRepository, PlayerService playerService) {
         this.playerRepository = playerRepository;
+        this.playerService = playerService;
     }
 
     @GetMapping
@@ -45,6 +49,11 @@ public class PlayerController {
         modelAndView.addObject("player", this.playerRepository.findByName(name).orElseThrow());
 
         return modelAndView;
+    }
+
+    @GetMapping("stats")
+    public ResponseEntity<List<PlayerGoalsAndPassesDto>> playerGoalsAndPasses() {
+        return ResponseEntity.ok(this.playerService.playerGoalsAndPassesDtoList());
     }
 
 
