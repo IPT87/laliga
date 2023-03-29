@@ -38,4 +38,8 @@ public class UserService {
         return this.userRepository.findByUsername(username).get();
     }
 
+    public List<UserEntity> getAllUsers() {
+        return this.userRepository.findAll();
+    }
+
 }
