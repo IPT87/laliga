@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{fragments/head::head}">
+</head>
+<body style="background-image: url('/images/stadium.jpeg')">
+
+<div>
+  <nav th:replace="~{fragments/navigation :: navigation}"></nav>
+</div>
+
+<div class="container-fluid">
+
+  <h2 class="text-center text-white mt-5">Leaderboard Season 2022-2023</h2>
+
+  <table id="leaderboard-table" class="table table-dark table-striped">
+    <thead>
+    <tr>
+      <th></th>
+      <th class="font-monospace">TEAM</th>
+      <th class="font-monospace">WIN</th>
+      <th class="font-monospace">DRAW</th>
+      <th class="font-monospace">LOSE</th>
+      <th class="font-monospace">POINTS</th>
+    </tr>
+    </thead>
+    <tbody id="standings-container">
+    </tbody>
+  </table>
+
+</div>
+
+<div>
+  <footer> </footer>
+</div>
+
+<script type="application/javascript">
+
+  getTeamsStandings();
+
+  function getTeamsStandings() {
+
+    let controllerTeamsDataAddress = "http://localhost:8080/teams/standings";
+    let controllerTeamInfoAddress = "http://localhost:8080/teams/standings/";
+
+    let container = document.getElementById("standings-container");
+    container.innerHTML = ''
+
+    let requestOptions = {
+      method: 'GET'
+    }
+
+    fetch(controllerTeamsDataAddress, requestOptions)
+            .then(response => response.json())
+            .then(json => json.forEach(team => {
+              let row = document.createElement("tr");
+
+              let imgContainer = document.createElement("td");
+              let img = document.createElement("img");
+              img.src = team.photoUrl;
+              img.style.width = '7vw';
+              img.style.height = '7vw';
+              let link = document.createElement("a");
+              link.href = controllerTeamInfoAddress + team.name;
+              link.appendChild(img);
+              imgContainer.appendChild(link);
+              let name = document.createElement("td");
+              let wins = document.createElement("td");
+              let draws = document.createElement("td");
+              let loses = document.createElement("td");
+              let points = document.createElement("td");
+
+              name.textContent = team.name;
+              wins.textContent = team.wins;
+              draws.textContent = team.draws;
+              loses.textContent = team.loses;
+              points.textContent = team.points;
+
+              row.appendChild(imgContainer);
+              row.appendChild(name);
+              row.appendChild(wins);
+              row.appendChild(draws);
+              row.appendChild(loses);
+              row.appendChild(points);
+
+              container.appendChild(row);
+
+            }))
+
+  }
+
+</script>
+
+</body>
+
+</html>

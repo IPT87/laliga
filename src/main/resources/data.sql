@@ -53,4 +53,13 @@ VALUES (1, 'Robert', 'Lewandowski', '21-08-1988', 'Warszawa', 'Forward', '/image
 
 INSERT INTO teams (id, year_of_foundation, president, name, official_web, photo_url, matches_played, matches_to_play,
                    wins, draws, loses, points)
-VALUES (1, 1957, 'Joan Laporta Estruch', 'Barcelona', 'www.barcelona.com', '/images/fcBarcelona.png', 26, 12, 22, 2, 2, 68);
+VALUES (1, 1957, 'Florentino Perez', 'Real Madrid', 'www.real-madrid.com', '/images/clubLogos/realMadrid.png', 26, 12, 22, 2, 2, 71),
+       (2, 1957, 'Joan Laporta Estruch', 'Barcelona', 'www.barcelona.com', '/images/clubLogos/fcBarcelona.png', 26, 12, 21, 7, 3, 68),
+       (3, 1957, 'Enrique Cerezo', 'Atletico Madrid', 'www.atm-fc.com', '/images/clubLogos/atleticoMadrid.jpg', 25, 11, 20, 5, 3, 67),
+       (4, 1957, 'Ángel Haro García', 'Betis', 'www.betis.com', '/images/clubLogos/betis.png', 26, 12, 20, 4, 4, 62),
+       (5, 1957, 'Ángel Torres Sánchez', 'Getafe', 'www.getafe.com', '/images/clubLogos/getafe.png', 25, 11, 18, 8, 4, 60),
+       (6, 1957, 'Fernando Roig Alfonso', 'Villarreal', 'www.villarreal.com', '/images/clubLogos/villarreal.jpg', 26, 12, 19, 4, 5, 55),
+       (7, 1957, 'Jokin Aperribay', 'Real Sociedad', 'www.r-sociedad.com', '/images/clubLogos/realSociedad.png', 25, 11, 17, 2, 6, 55),
+       (8, 1957, 'Carlos Mouriño', 'Celta Vigo', 'www.celta.com', '/images/clubLogos/celtaVigo.png', 26, 12, 15, 3, 7, 53),
+       (9, 1957, 'Lay Hoon Chan', 'Valencia', 'www.valencia.com', '/images/clubLogos/valencia.png', 25, 11, 19, 5, 9, 52),
+       (10, 1957, 'Manuel Vizcaino Fernández', 'Cadiz', 'www.cadiz.com', '/images/clubLogos/cadiz.png', 26, 12, 14, 6, 10, 48);
