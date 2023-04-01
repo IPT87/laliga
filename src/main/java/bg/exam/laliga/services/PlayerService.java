@@ -1,6 +1,8 @@
 package bg.exam.laliga.services;
 
+import bg.exam.laliga.domain.dto.AddPlayerFormDto;
 import bg.exam.laliga.domain.dto.PlayerGoalsAndPassesDto;
+import bg.exam.laliga.domain.entities.PlayerEntity;
 import bg.exam.laliga.repositories.PlayerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,13 @@ public class PlayerService {
 
     public List<PlayerGoalsAndPassesDto> playerGoalsAndPassesDtoList() {
         return this.playerRepository.findAll().stream().map(p -> mapper.map(p, PlayerGoalsAndPassesDto.class)).toList();
+    }
+
+    public void addNewPlayer(AddPlayerFormDto playerFormDto) {
+
+        PlayerEntity newPlayer = this.mapper.map(playerFormDto, PlayerEntity.class);
+
+        this.playerRepository.save(newPlayer);
     }
 
 }

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head::head}"></head>
+
+
+<body style="background-image: url('/images/maintenance.jpg')">
+
+<div th:replace="~{fragments/navigation :: navigation}">
+    Navbar
+</div>
+
+<div class="container">
+    <h2 class="text-center text-dark">ADD NEW STADIUM</h2>
+    <form
+            th:method="POST"
+            th:action="@{/administrationPanel/addStadium}"
+            class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center" >
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="name" class="text-white font-weight-bold">Stadium name</label>
+                <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        class="form-control"
+                        min="2" max="40"
+                        placeholder="Stadium name"
+                        required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="city" class="text-white font-weight-bold">City</label>
+                <input
+                        id="city"
+                        name="city"
+                        type="text"
+                        class="form-control"
+                        min="2" max="40"
+                        placeholder="City"
+                        required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="yearOfConstruction" class="text-white font-weight-bold">Year of construction</label>
+                <input id="yearOfConstruction"
+                       name="yearOfConstruction"
+                       type="date" class="form-control"
+                       placeholder="00/00/0000"
+                       required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="capacity" class="text-white font-weight-bold">Capacity</label>
+                <input id="capacity"
+                       name="capacity"
+                       type="number" min="8000" max="120000" class="form-control"
+                       placeholder="Capacity"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="info" class="text-white font-weight-bold">Info</label>
+                <input id="info"
+                       name="info"
+                       type="text" min="20" max="500" class="form-control"
+                       placeholder="Info"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="photoUrl" class="text-white font-weight-bold">Photo URL</label>
+                <input id="photoUrl"
+                       name="photoUrl"
+                       type="text" min="5" max="30" class="form-control"
+                       placeholder="images/..."
+                       required/>
+            </div>
+        </div>
+
+        <div th:if="${errorFields}"
+             class="errors alert alert-danger">
+            Incorrect value in the fields:
+            <div th:each="error : ${errorFields}">
+                <p th:text="${error}" style="text-transform: uppercase" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col col-md-4">
+                <div class="button-holder d-flex">
+                    <input type="submit" class="btn btn-info btn-lg" value="Add stadium"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <footer> </footer>
+</div>
+
+</body>
+</html>

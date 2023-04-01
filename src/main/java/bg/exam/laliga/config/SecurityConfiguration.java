@@ -30,7 +30,7 @@ public class SecurityConfiguration {
                 requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                 // the URL-s below are available for all users - logged in and anonymous
                 requestMatchers("/", "/users/login", "/users/register", "/users/login-error", "/info").permitAll().
-                requestMatchers("/admin").hasRole(UserRoleEnum.ADMIN.name()).
+                requestMatchers("/administrationPanel").hasRole(UserRoleEnum.ADMIN.name()).
                 anyRequest().authenticated().
                 and().
                 // configure login with HTML form

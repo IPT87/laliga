@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head::head}"></head>
+
+
+<body style="background-image: url('/images/maintenance.jpg')">
+
+<div th:replace="~{fragments/navigation :: navigation}">
+    Navbar
+</div>
+
+<div class="container">
+    <h2 class="text-center text-dark">ADD NEW PLAYER</h2>
+    <form
+            th:method="POST"
+            th:action="@{/administrationPanel/addPlayer}"
+            class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center" >
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="name" class="text-white font-weight-bold">First name</label>
+                <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        class="form-control"
+                        min="2" max="30"
+                        placeholder="First name"
+                        required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="lastName" class="text-white font-weight-bold">Last name</label>
+                <input
+                        id="lastName"
+                        name="lastName"
+                        type="text"
+                        class="form-control"
+                        min="2" max="30"
+                        placeholder="Last name"
+                        required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="dateOfBirth" class="text-white font-weight-bold">Date of birth</label>
+                <input id="dateOfBirth"
+                       name="dateOfBirth"
+                       type="date" class="form-control"
+                       placeholder="00/00/0000"
+                       required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="placeOfBirth" class="text-white font-weight-bold">Place of birth</label>
+                <input id="placeOfBirth"
+                       name="placeOfBirth"
+                       type="text" min="2" max="20" class="form-control"
+                       placeholder="Place of birth"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="position" class="text-white font-weight-bold">Position</label>
+                <input id="position"
+                       name="position"
+                       type="text" min="2" max="10" class="form-control"
+                       placeholder="Forward/Midfielder/Defender/Goalkeeper"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="photoUrl" class="text-white font-weight-bold">Photo URL</label>
+                <input id="photoUrl"
+                       name="photoUrl"
+                       type="text" min="5" max="20" class="form-control"
+                       placeholder="images/..."
+                       required/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="flagUrl" class="text-white font-weight-bold">Country flag URL</label>
+                <input id="flagUrl"
+                       name="flagUrl"
+                       type="text" min="5" max="60" class="form-control"
+                       placeholder="images/..."
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="weight" class="text-white font-weight-bold">Weight</label>
+                <input id="weight"
+                       name="weight"
+                       type="number" min="40" max="100" class="form-control"
+                       placeholder="0kg"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="height" class="text-white font-weight-bold">Height</label>
+                <input id="height"
+                       name="height"
+                       type="number" min="130" max="230" class="form-control"
+                       placeholder="0cm"
+                       required/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="goals" class="text-white font-weight-bold">Goals</label>
+                <input id="goals"
+                       name="goals"
+                       type="number" min="0" max="200" class="form-control"
+                       placeholder="0"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="assists" class="text-white font-weight-bold">Assists</label>
+                <input id="assists"
+                       name="assists"
+                       type="number" min="0" max="200" class="form-control"
+                       placeholder="0"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="matchesPlayed" class="text-white font-weight-bold">Matches played</label>
+                <input id="matchesPlayed"
+                       name="matchesPlayed"
+                       type="number" min="0" max="200" class="form-control"
+                       placeholder="0"
+                       required/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="shots" class="text-white font-weight-bold">Shots</label>
+                <input id="shots"
+                       name="shots"
+                       type="number" min="0" max="200" class="form-control"
+                       placeholder="0"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="minutes" class="text-white font-weight-bold">Minutes</label>
+                <input id="minutes"
+                       name="minutes"
+                       type="number" min="0" max="5000" class="form-control"
+                       placeholder="0"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="starts" class="text-white font-weight-bold">Starts</label>
+                <input id="starts"
+                       name="starts"
+                       type="number" min="0" max="500" class="form-control"
+                       placeholder="0"
+                       required/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="substitutions" class="text-white font-weight-bold">Substitutions</label>
+                <input id="substitutions"
+                       name="substitutions"
+                       type="number" min="0" max="300" class="form-control"
+                       placeholder="0"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="fouls" class="text-white font-weight-bold">Fouls</label>
+                <input id="fouls"
+                       name="fouls"
+                       type="number" min="0" max="200" class="form-control"
+                       placeholder="0"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="penalties" class="text-white font-weight-bold">Penalties</label>
+                <input id="penalties"
+                       name="penalties"
+                       type="number" min="0" max="100" class="form-control"
+                       placeholder="0"
+                       required/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="yellowCards" class="text-white font-weight-bold">Yellow cards</label>
+                <input id="yellowCards"
+                       name="yellowCards"
+                       type="number" min="0" max="300" class="form-control"
+                       placeholder="0"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="redCards" class="text-white font-weight-bold">Red cards</label>
+                <input id="redCards"
+                       name="redCards"
+                       type="number" min="0" max="200" class="form-control"
+                       placeholder="0"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="doubleYellowCards" class="text-white font-weight-bold">Double yellow cards</label>
+                <input id="doubleYellowCards"
+                       name="doubleYellowCards"
+                       type="number" min="0" max="100" class="form-control"
+                       placeholder="0"
+                       required/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="teamName" class="text-white font-weight-bold">Team name</label>
+                <input id="teamName"
+                       name="teamName"
+                       type="text" min="2" max="30" class="form-control"
+                       placeholder="0"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="teamLogoUrl" class="text-white font-weight-bold">Team logo URL</label>
+                <input id="teamLogoUrl"
+                       name="teamLogoUrl"
+                       type="text" min="10" max="50" class="form-control"
+                       placeholder="images/..."
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="dorsal" class="text-white font-weight-bold">Dorsal</label>
+                <input id="dorsal"
+                       name="dorsal"
+                       type="number" min="0" max="100" class="form-control"
+                       placeholder="0"
+                       required/>
+            </div>
+        </div>
+
+        <div th:if="${errorFields}"
+           class="errors alert alert-danger">
+            Incorrect value in the fields:
+            <div th:each="error : ${errorFields}">
+                <p th:text="${error}" style="text-transform: uppercase" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col col-md-4">
+                <div class="button-holder d-flex">
+                    <input type="submit" class="btn btn-info btn-lg" value="Add player"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <footer> </footer>
+</div>
+
+</body>
+</html>

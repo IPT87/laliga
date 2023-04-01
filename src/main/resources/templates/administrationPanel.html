@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head::head}">
+</head>
+<body>
+
+<div>
+  <nav th:replace="~{fragments/navigation :: navigation}"></nav>
+</div>
+
+<div class="container h-100 d-flex align-items-center justify-content-center">
+  <div class="row">
+    <div class="btn-group">
+      <div class="col">
+        <a th:href="@{administrationPanel/addPlayer}"> <button class="btn btn-primary" type="button" >ADD PLAYER</button> </a>
+      </div>
+      <div class="col">
+        <a th:href="@{administrationPanel/addStadium}"> <button class="btn btn-primary" type="button" >ADD STADIUM</button> </a>
+      </div>
+      <div class="col">
+        <a th:href="@{administrationPanel/addTeam}"> <button class="btn btn-primary" type="button" >ADD TEAM</button> </a>
+      </div>
+    </div>
+  </div>
+  <div class="row p-4">
+    <div class="btn-group">
+      <div class="col">
+        <a th:href="@{administrationPanel/addCoach}"> <button class="btn btn-primary" type="button" >ADD COACH</button> </a>
+      </div>
+      <div class="col">
+        <a th:href="@{administrationPanel/addReferee}"> <button class="btn btn-primary" type="button" >ADD REFEREE</button> </a>
+      </div>
+      <div class="col">
+        <a th:href="@{administrationPanel/modifyUser}"> <button class="btn btn-primary" type="button" >MODIFY USER</button> </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <footer></footer>
+</div>
+
+</body>
+</html>
