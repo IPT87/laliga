@@ -21,7 +21,7 @@ public class TeamEntity {
     private Long id;
 
     @Column(name = "year_of_foundation")
-    private int yearOfFoundation;
+    private String yearOfFoundation;
 
     @Column
     private String president;
@@ -53,7 +53,7 @@ public class TeamEntity {
     @Column
     private int points;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<PlayerEntity> players;
 
 }

@@ -1,10 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head::head}"></head>
+
+
+<body style="background-image: url('/images/maintenance.jpg')">
+
+<div th:replace="~{fragments/navigation :: navigation}">
+    Navbar
+</div>
+
+<div class="container">
+
+    <a href="javascript:history.back()" class="back-button">Back</a>
+
+    <h2 class="text-center text-dark">ADD NEW TEAM</h2>
+    <form
+            th:method="POST"
+            th:action="@{/administrationPanel/addTeam}"
+            class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center"
+            id="teamForm" >
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="name" class="text-white font-weight-bold">Name</label>
+                <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        class="form-control"
+                        min="2" max="40"
+                        placeholder="Name"
+                        required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="president" class="text-white font-weight-bold">President</label>
+                <input
+                        id="president"
+                        name="president"
+                        type="text"
+                        class="form-control"
+                        min="2" max="40"
+                        placeholder="President"
+                        required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="yearOfFoundation" class="text-white font-weight-bold">Year of foundation</label>
+                <input id="yearOfFoundation"
+                       name="yearOfFoundation"
+                       type="date"
+                       class="form-control"
+                       placeholder="0000-00-00"
+                       required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="officialWeb" class="text-white font-weight-bold">Official web page</label>
+                <input id="officialWeb"
+                       name="officialWeb"
+                       type="text" min="5" max="30" class="form-control"
+                       placeholder="Web page"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="matchesPlayed" class="text-white font-weight-bold">Matches played</label>
+                <input id="matchesPlayed"
+                       name="matchesPlayed"
+                       type="number" min="0" max="200" class="form-control"
+                       placeholder="Matches played"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="photoUrl" class="text-white font-weight-bold">Photo URL</label>
+                <input id="photoUrl"
+                       name="photoUrl"
+                       type="text" min="5" max="40" class="form-control"
+                       placeholder="images/..."
+                       required/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="matchesToPlay" class="text-white font-weight-bold">Matches to play</label>
+                <input id="matchesToPlay"
+                       name="matchesToPlay"
+                       type="number" min="0" max="200" class="form-control"
+                       placeholder="Matches to play"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="wins" class="text-white font-weight-bold">Wins</label>
+                <input id="wins"
+                       name="wins"
+                       type="number" min="0" max="200" class="form-control"
+                       placeholder="Wins"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="draws" class="text-white font-weight-bold">Draws</label>
+                <input id="draws"
+                       name="draws"
+                       type="number" min="0" max="200" class="form-control"
+                       placeholder="Draws"
+                       required/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="loses" class="text-white font-weight-bold">Loses</label>
+                <input id="loses"
+                       name="loses"
+                       type="number" min="0" max="200" class="form-control"
+                       placeholder="Loses"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="points" class="text-white font-weight-bold">Points</label>
+                <input id="points"
+                       name="points"
+                       type="number" min="0" max="600" class="form-control"
+                       placeholder="Points"
+                       required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="players" class="text-white font-weight-bold">Players</label>
+                <select id="players" form="teamForm" name="players" multiple>
+                    <option th:each="playerName: ${allPlayers}" th:value="${playerName}" th:text="${playerName}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div th:if="${errorFields}"
+             class="errors alert alert-danger">
+            Incorrect value in the fields:
+            <div th:each="error : ${errorFields}">
+                <p th:text="${error}" style="text-transform: uppercase" />
+            </div>
+        </div>
+
+        <div th:if="${success}"
+             class="alert-success p-2 m-2 text-center">
+            <h4>Team added!</h4>
+        </div>
+
+        <div class="row">
+            <div class="col col-md-4">
+                <div class="button-holder d-flex">
+                    <input type="submit" class="btn btn-info btn-lg" value="Add team"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <footer> </footer>
+</div>
 
 </body>
 </html>

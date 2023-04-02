@@ -2,6 +2,7 @@ package bg.exam.laliga.services;
 
 import bg.exam.laliga.domain.dto.AddPlayerFormDto;
 import bg.exam.laliga.domain.dto.PlayerGoalsAndPassesDto;
+import bg.exam.laliga.domain.entities.BaseEntity;
 import bg.exam.laliga.domain.entities.PlayerEntity;
 import bg.exam.laliga.repositories.PlayerRepository;
 import org.modelmapper.ModelMapper;
@@ -29,6 +30,14 @@ public class PlayerService {
         PlayerEntity newPlayer = this.mapper.map(playerFormDto, PlayerEntity.class);
 
         this.playerRepository.save(newPlayer);
+    }
+
+    public List<String> allPlayersNames() {
+        return this.playerRepository.findAll().stream().map(BaseEntity::getName).toList();
+    }
+
+    public PlayerEntity getPlayerByName(String name) {
+        return this.playerRepository.findByName(name).get();
     }
 
 }

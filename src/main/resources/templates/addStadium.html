@@ -12,6 +12,7 @@
 </div>
 
 <div class="container">
+    <a href="javascript:history.back()" class="back-button">Back</a>
     <h2 class="text-center text-dark">ADD NEW STADIUM</h2>
     <form
             th:method="POST"
@@ -82,6 +83,11 @@
             <div th:each="error : ${errorFields}">
                 <p th:text="${error}" style="text-transform: uppercase" />
             </div>
+        </div>
+
+        <div th:if="${success}"
+             class="alert-success p-2 m-2 text-center">
+            <h4>Stadium added!</h4>
         </div>
 
         <div class="row">

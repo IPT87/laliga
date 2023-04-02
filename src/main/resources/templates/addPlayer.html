@@ -12,11 +12,15 @@
 </div>
 
 <div class="container">
+
+    <a href="javascript:history.back()" class="back-button">Back</a>
+
     <h2 class="text-center text-dark">ADD NEW PLAYER</h2>
     <form
             th:method="POST"
             th:action="@{/administrationPanel/addPlayer}"
-            class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center" >
+            class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center"
+            id="playerForm" >
         <div class="row">
             <div class="form-group col-md-4">
                 <label for="name" class="text-white font-weight-bold">First name</label>
@@ -60,11 +64,9 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="position" class="text-white font-weight-bold">Position</label>
-                <input id="position"
-                       name="position"
-                       type="text" min="2" max="10" class="form-control"
-                       placeholder="Forward/Midfielder/Defender/Goalkeeper"
-                       required/>
+                <select id="position" form="playerForm" name="position" >
+                    <option th:each="position: ${allPositions}" th:value="${position}" th:text="${position}"></option>
+                </select>
             </div>
             <div class="form-group col-md-4">
                 <label for="photoUrl" class="text-white font-weight-bold">Photo URL</label>
@@ -244,6 +246,11 @@
             <div th:each="error : ${errorFields}">
                 <p th:text="${error}" style="text-transform: uppercase" />
             </div>
+        </div>
+
+        <div th:if="${success}"
+             class="alert-success p-2 m-2 text-center">
+            <h4>Player added!</h4>
         </div>
 
         <div class="row">
