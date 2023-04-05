@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{fragments/head::head}">
+</head>
+<body style="background-image: url('/images/maintenance.jpg')">
+
+<div>
+  <nav th:replace="~{fragments/navigation :: navigation}"></nav>
+</div>
+
+<div class="container-fluid">
+
+  <h2 class="text-center text-dark">Users</h2>
+
+  <table id="users-table" class="table table-dark table-striped">
+    <thead>
+    <tr>
+      <th class="font-monospace">NAME</th>
+      <th class="font-monospace">EMAIL</th>
+      <th class="font-monospace text-danger">DANGER</th>
+    </tr>
+    </thead>
+    <tbody id="users-container">
+    <tr th:each="user: ${allUsers}">
+      <td> <a th:href="'http://localhost:8080/users/user/' + ${user.username}" th:text="${user.username}"></a></td>
+      <td th:text="${user.email}" ></td>
+      <td> <a th:href="'http://localhost:8080/users/delete/' + ${user.username}"><h6 class="text-danger">DELETE USER</h6></a></td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div>
+  <footer> </footer>
+</div>
+
+</body>
+
+</html>

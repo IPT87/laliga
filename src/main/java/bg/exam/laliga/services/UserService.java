@@ -5,6 +5,7 @@ import bg.exam.laliga.domain.entities.UserEntity;
 import bg.exam.laliga.domain.entities.UserRoleEntity;
 import bg.exam.laliga.domain.enums.UserRoleEnum;
 import bg.exam.laliga.repositories.UserRepository;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,15 @@ public class UserService {
 
     public List<UserEntity> getAllUsers() {
         return this.userRepository.findAll();
+    }
+
+    public void saveUser(UserEntity userEntity) {
+        this.userRepository.saveAndFlush(userEntity);
+    }
+
+    @Transactional
+    public void deleteUser(String username) {
+        this.userRepository.deleteUserEntityByUsername(username);
     }
 
 }

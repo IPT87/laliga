@@ -1,10 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head::head}"></head>
+
+
+<body style="background-image: url('/images/maintenance.jpg')">
+
+<div th:replace="~{fragments/navigation :: navigation}">
+    Navbar
+</div>
+
+<div class="container">
+    <h2 class="text-center text-dark">Modify User</h2>
+    <form
+            th:method="POST"
+            th:action="@{/users/userModify}"
+            class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center"
+            id="modifyForm">
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label for="username" class="text-white font-weight-bold">Name</label>
+                <input
+                        id="username"
+                        name="username"
+                        th:value="${userToModify.username}"
+                        type="text"/>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label for="email" class="text-white font-weight-bold">Email</label>
+                <input id="email"
+                       th:value="${userToModify.email}"
+                       name="email"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label for="currentRole" class="text-white font-weight-bold">Remove user role</label>
+                <select id="currentRole" form="modifyForm" name="currentRole" >
+                    <option disabled selected hidden> -- Select a role -- </option>
+                    <option th:each="currentRole: ${currentRoles}" th:value="${currentRole.role}" th:text="${currentRole.role}"></option>
+                </select>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label for="role" class="text-white font-weight-bold">Set user role</label>
+                <select id="role" form="modifyForm" name="role" >
+                    <option th:each="role: ${allRoles}" th:value="${role}" th:text="${role}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col col-md-4">
+                <div class="button-holder d-flex">
+                    <input type="submit" class="btn btn-info btn-lg" value="Modify user"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <footer> </footer>
+</div>
 
 </body>
 </html>
