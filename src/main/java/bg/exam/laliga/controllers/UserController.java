@@ -49,7 +49,7 @@ public class UserController {
         UserRoleEntity roleToAdd = new UserRoleEntity(userModified.getRole());
 
         UserEntity existingUser = this.userService.getUser(userModified.getUsername());
-       
+
         if (userModified.getCurrentRole() != null) {
 
             UserRoleEntity currentRole = new UserRoleEntity();

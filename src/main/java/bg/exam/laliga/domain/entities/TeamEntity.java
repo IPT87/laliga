@@ -29,11 +29,17 @@ public class TeamEntity {
     @Column
     private String name;
 
+    @Column(name = "stadium_name")
+    private String stadiumName;
+
     @Column(name = "official_web")
     private String officialWeb;
 
     @Column(name = "photo_url")
     private String photoUrl;
+
+    @Column(name = "stadium_photo_url")
+    private String stadiumPhotoUrl;
 
     @Column(name = "matches_played")
     private int matchesPlayed;

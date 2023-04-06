@@ -15,17 +15,17 @@ VALUES
 
 INSERT INTO stadiums (id, name, city, year_of_construction, capacity, photo_url, info)
 VALUES
-    (1, 'Santiago Bernabeu', 'Madrid', 1947, 81044, '/images/santiago-bernabeu.jpg', 'The Santiago Bernabéu Stadium (Spanish: Estadio Santiago Bernabéu) is a football stadium in Madrid, Spain. '
+    (1, 'Santiago Bernabeu', 'Madrid', 1947, 81044, '/images/stadiums/santiago-bernabeu.jpg', 'The Santiago Bernabéu Stadium (Spanish: Estadio Santiago Bernabéu) is a football stadium in Madrid, Spain. '
                                                                                      'With a current seating capacity of 81,044, it has been the home stadium of Real Madrid since its completion in 1947.'),
-    (2, 'Spotify Camp Nou Barcelona', 'Barcelona', 1957, 99354, '/images/campNou.jpg', 'Since 1957, Camp Nou has been the FC Barcelona stadium and has paralleled the city’s football team in going from strength to strength.'),
-    (3, 'Civitas Metropolitano', 'Madrid', 2017, 68456, '/images/wanda.jpg', 'Inaugurated in September 2017, the stadium is located in the north-east of the city, near Adolfo-Suarez Madrid Barajas Airport. In 2019 it hosted the Champions League Final between Liverpool and Tottenham Hotspur.'),
-    (4, 'Benito Villamarín', 'Sevilla', 1929, 59378, '/images/benito.jpg', 'Benito Villamarín Stadium, apart from being the venue for Real Betis Balompié home fixtures, is the centre of all the Green-and-White activities. In constant evolution, the stadium has all the nowadays facilities.'),
-    (5, 'San Mamés', 'Bilbao', 2013, 53289, '/images/sanMames.jpg', 'Estadio San Mamés replaced Athlétic’s old stadium with the same name, which had served the club for almost 100 years, but did not offer the facilities of modern-day stadiums.'),
-    (6, 'Mestalla', 'Valencia', 1923, 48600, '/images/mestalla.jpg', 'Mestalla was ranked above other Spanish grounds such as the Camp Nou, Santiago Bernabéu and Vicente Calderón, as well as other legendary grounds like the Parc des Princes, Anfield, Allianz Arena, Old Trafford, and the Giuseppe Meazza.'),
-    (7, 'Ramón Sánchez-Pizjuán', 'Sevilla', 1958, 43883, '/images/ramonSanchez.jpg', 'Christened on the 7th of September 1958 in a friendly against Real Jaén, its construction responded to the new demands of football, providing the commodities and capacities that the ancient ground of Nervión could not satisfy.'),
-    (8, 'Reale Arena', 'San Sebastian', 1993, 39313, '/images/reale.jpg', 'Reale Arena is our home. Opened in 1993, the stadium, which replaced our beloved Atotxa, today hosts the first team''s home fixtures. Boasting a capacity of 32,000, the arena is soon set to undergo a makeover which will bring it in line with future plans.'),
-    (9, 'Abanca Balaídos', 'Vigo', 1928, 29000, '/images/balaidos.jpg', 'Estadio Municipal de Balaídos opened in 1928 after a three-year construction period. The first match was played between Celta and Real Union on the 30th of December of that year (7-0).'),
-    (10, 'El Sadar', 'Pamplona', 1967, 23576, '/images/sadar.jpg', 'Estadio El Sadar, previously also known as Estadio Reyno de Navarra, replaced Osasuna’s old Campo de San Juan. El Sadar opened on 2 September 1967 with a three-team tournament involving Osasuna, Real Zaragoza, and Portuguese side Vitoria de Setúbal.');
+    (2, 'Spotify Camp Nou Barcelona', 'Barcelona', 1957, 99354, '/images/stadiums/campNou.jpg', 'Since 1957, Camp Nou has been the FC Barcelona stadium and has paralleled the city’s football team in going from strength to strength.'),
+    (3, 'Civitas Metropolitano', 'Madrid', 2017, 68456, '/images/stadiums/wanda.jpg', 'Inaugurated in September 2017, the stadium is located in the north-east of the city, near Adolfo-Suarez Madrid Barajas Airport. In 2019 it hosted the Champions League Final between Liverpool and Tottenham Hotspur.'),
+    (4, 'Benito Villamarín', 'Sevilla', 1929, 59378, '/images/stadiums/benito.jpg', 'Benito Villamarín Stadium, apart from being the venue for Real Betis Balompié home fixtures, is the centre of all the Green-and-White activities. In constant evolution, the stadium has all the nowadays facilities.'),
+    (5, 'San Mamés', 'Bilbao', 2013, 53289, '/images/stadiums/sanMames.jpg', 'Estadio San Mamés replaced Athlétic’s old stadium with the same name, which had served the club for almost 100 years, but did not offer the facilities of modern-day stadiums.'),
+    (6, 'Mestalla', 'Valencia', 1923, 48600, '/images/stadiums/mestalla.jpg', 'Mestalla was ranked above other Spanish grounds such as the Camp Nou, Santiago Bernabéu and Vicente Calderón, as well as other legendary grounds like the Parc des Princes, Anfield, Allianz Arena, Old Trafford, and the Giuseppe Meazza.'),
+    (7, 'Ramón Sánchez-Pizjuán', 'Sevilla', 1958, 43883, '/images/stadiums/ramonSanchez.jpg', 'Christened on the 7th of September 1958 in a friendly against Real Jaén, its construction responded to the new demands of football, providing the commodities and capacities that the ancient ground of Nervión could not satisfy.'),
+    (8, 'Reale Arena', 'San Sebastian', 1993, 39313, '/images/stadiums/reale.jpg', 'Reale Arena is our home. Opened in 1993, the stadium, which replaced our beloved Atotxa, today hosts the first team''s home fixtures. Boasting a capacity of 32,000, the arena is soon set to undergo a makeover which will bring it in line with future plans.'),
+    (9, 'Abanca Balaídos', 'Vigo', 1928, 29000, '/images/stadiums/balaidos.jpg', 'Estadio Municipal de Balaídos opened in 1928 after a three-year construction period. The first match was played between Celta and Real Union on the 30th of December of that year (7-0).'),
+    (10, 'El Sadar', 'Pamplona', 1967, 23576, '/images/stadiums/sadar.jpg', 'Estadio El Sadar, previously also known as Estadio Reyno de Navarra, replaced Osasuna’s old Campo de San Juan. El Sadar opened on 2 September 1967 with a three-team tournament involving Osasuna, Real Zaragoza, and Portuguese side Vitoria de Setúbal.');
 
 INSERT INTO players (id, name, last_name, date_of_birth, place_of_birth, position, photo_url, flag_url, weight, height,
                      goals, assists, shots, matches_played, minutes, starts, substitutions, fouls, penalties,
@@ -51,15 +51,31 @@ VALUES (1, 'Robert', 'Lewandowski', '21-08-1988', 'Warszawa', 'Forward', '/image
  (10, 'Toni', 'Kroos', '04-01-1990', 'Greifswald', 'Midfielder', '/images/players/toniKroos.jpg', '/images/countryFlags/germanyFlag.png', 76, 183, 4, 3, 16, 21,
         1508, 18, 10, 17, 0, 0, 1, 1, 'Real Madrid', '/images/clubLogos/realMadrid.png', 10);
 
-INSERT INTO teams (id, year_of_foundation, president, name, official_web, photo_url, matches_played, matches_to_play,
+INSERT INTO teams (id, year_of_foundation, president, name, stadium_name, official_web, photo_url, stadium_photo_url, matches_played, matches_to_play,
                    wins, draws, loses, points)
-VALUES (1, 1957, 'Florentino Perez', 'Real Madrid', 'www.real-madrid.com', '/images/clubLogos/realMadrid.png', 26, 12, 22, 2, 2, 71),
-       (2, 1957, 'Joan Laporta Estruch', 'Barcelona', 'www.barcelona.com', '/images/clubLogos/fcBarcelona.png', 26, 12, 21, 7, 3, 68),
-       (3, 1957, 'Enrique Cerezo', 'Atletico Madrid', 'www.atm-fc.com', '/images/clubLogos/atleticoMadrid.jpg', 25, 11, 20, 5, 3, 67),
-       (4, 1957, 'Ángel Haro García', 'Betis', 'www.betis.com', '/images/clubLogos/betis.png', 26, 12, 20, 4, 4, 62),
-       (5, 1957, 'Ángel Torres Sánchez', 'Getafe', 'www.getafe.com', '/images/clubLogos/getafe.png', 25, 11, 18, 8, 4, 60),
-       (6, 1957, 'Fernando Roig Alfonso', 'Villarreal', 'www.villarreal.com', '/images/clubLogos/villarreal.jpg', 26, 12, 19, 4, 5, 55),
-       (7, 1957, 'Jokin Aperribay', 'Real Sociedad', 'www.r-sociedad.com', '/images/clubLogos/realSociedad.png', 25, 11, 17, 2, 6, 55),
-       (8, 1957, 'Carlos Mouriño', 'Celta Vigo', 'www.celta.com', '/images/clubLogos/celtaVigo.png', 26, 12, 15, 3, 7, 53),
-       (9, 1957, 'Lay Hoon Chan', 'Valencia', 'www.valencia.com', '/images/clubLogos/valencia.png', 25, 11, 19, 5, 9, 52),
-       (10, 1957, 'Manuel Vizcaino Fernández', 'Cadiz', 'www.cadiz.com', '/images/clubLogos/cadiz.png', 26, 12, 14, 6, 10, 48);
+VALUES (1, 1957, 'Florentino Perez', 'Real Madrid', 'Santiago Bernabeu', 'www.real-madrid.com', '/images/clubLogos/realMadrid.png', '/images/stadiums/santiago-bernabeu.jpg', 26, 12, 22, 2, 2, 71),
+       (2, 1951, 'Joan Laporta Estruch', 'Barcelona', 'Camp Nou', 'www.barcelona.com', '/images/clubLogos/fcBarcelona.png', '/images/stadiums/campNou.jpg', 26, 12, 21, 7, 3, 68),
+       (3, 1940, 'Enrique Cerezo', 'Atletico Madrid', 'Civitas Metropolitano', 'www.atm-fc.com', '/images/clubLogos/atleticoMadrid.jpg', '/images/stadiums/wanda.jpg', 25, 11, 20, 5, 3, 67),
+       (4, 1981, 'Ángel Haro García', 'Betis', 'Benito Villamarin', 'www.betis.com', '/images/clubLogos/betis.png', '/images/stadiums/benito.jpg', 26, 12, 20, 4, 4, 62),
+       (5, 1999, 'Ángel Torres Sánchez', 'Getafe', 'Coliseum Alfonso Perez', 'www.getafe.com', '/images/clubLogos/getafe.png', '/images/stadiums/coliseum.jpg', 25, 11, 18, 8, 4, 60),
+       (6, 1939, 'Fernando Roig Alfonso', 'Villarreal', 'El Madrigal', 'www.villarreal.com', '/images/clubLogos/villarreal.jpg', '/images/stadiums/madrigal.jpg', 26, 12, 19, 4, 5, 55),
+       (7, 1966, 'Jokin Aperribay', 'Real Sociedad', 'Anoaeta', 'www.r-sociedad.com', '/images/clubLogos/realSociedad.png', '/images/stadiums/reale.jpg', 25, 11, 17, 2, 6, 55),
+       (8, 1969, 'Carlos Mouriño', 'Celta Vigo', 'Balaidos', 'www.celta.com', '/images/clubLogos/celtaVigo.png', '/images/stadiums/balaidos.jpg', 26, 12, 15, 3, 7, 53),
+       (9, 1978, 'Lay Hoon Chan', 'Valencia', 'Mestalla', 'www.valencia.com', '/images/clubLogos/valencia.png', '/images/stadiums/mestalla.jpg', 25, 11, 19, 5, 9, 52),
+       (10, 1979, 'Manuel Vizcaino Fernández', 'Nuevo Mirandilla', 'Cadiz', 'www.cadiz.com', '/images/clubLogos/cadiz.png', '/images/stadiums/mirandilla.jpg', 26, 12, 14, 6, 10, 48);
+
+INSERT INTO referees (id, name, last_name, date_of_birth, place_of_birth, position, photo_url, flag_url, la_liga_debut, fifa_debut)
+VALUES (1, 'Mateu', 'Lahoz', '12-03-1977', 'Algimia de Alfara', 'Referee', '/images/referees/mateuLahoz.jpg', '/images/countryFlags/spainFlag.png',
+        '25-08-2012', '04-10-2014'),
+       (2, 'Jesus', 'Gil Manzano', '04-02-1984', 'Don Benito', 'Referee', '/images/referees/gilManzano.jpg', '/images/countryFlags/spainFlag.png',
+        '13-09-2008', '02-11-2011'),
+       (3, 'De Burgos', 'Bengoetxea', '16-03-1986', 'Bilbao', 'Referee', '/images/referees/deBurgos.jpg', '/images/countryFlags/spainFlag.png',
+        '28-08-2015', '10-01-2018'),
+       (4, 'Carlos', 'del Cerro Grande', '13-03-1976', 'Alcala de Henares', 'Referee', '/images/referees/carlosDelCerro.jpg', '/images/countryFlags/spainFlag.png',
+        '11-09-2011', '22-12-2013'),
+       (5, 'Javier', 'Iglesias Villanueva', '23-04-1983', 'A Coruña', 'Referee', '/images/referees/villanueva.jpg', '/images/countryFlags/spainFlag.png',
+        '08-04-2012', ''),
+       (6, 'Cesar', 'Soto Grado', '23-04-1983', 'Candeleda', 'Referee', '/images/referees/cesarSoto.jpg', '/images/countryFlags/spainFlag.png',
+        '18-08-2019', ''),
+       (7, 'Jose Maria', 'Sanchez Martinez', '03-10-1983', 'Lorca', 'Referee', '/images/referees/joseMaria.jpg', '/images/countryFlags/spainFlag.png',
+        '29-08-2015', '');

@@ -18,6 +18,7 @@
     <tr>
       <th></th>
       <th class="font-monospace">TEAM</th>
+      <th></th>
       <th class="font-monospace">WIN</th>
       <th class="font-monospace">DRAW</th>
       <th class="font-monospace">LOSE</th>
@@ -41,7 +42,8 @@
   function getTeamsStandings() {
 
     let controllerTeamsDataAddress = "http://localhost:8080/teams/standings";
-    let controllerTeamInfoAddress = "http://localhost:8080/teams/standings/";
+    let teamInfoControllerAddress = "http://localhost:8080/teams/info/";
+    let numInTheLeaderboard = 0;
 
     let container = document.getElementById("standings-container");
     container.innerHTML = ''
@@ -53,15 +55,18 @@
     fetch(controllerTeamsDataAddress, requestOptions)
             .then(response => response.json())
             .then(json => json.forEach(team => {
-              let row = document.createElement("tr");
 
+              numInTheLeaderboard++;
+
+              let row = document.createElement("tr");
+              let standingNum = document.createElement("td");
               let imgContainer = document.createElement("td");
+              let link = document.createElement("a");
+              link.href = teamInfoControllerAddress + team.name;
               let img = document.createElement("img");
               img.src = team.photoUrl;
-              img.style.width = '7vw';
-              img.style.height = '7vw';
-              let link = document.createElement("a");
-              link.href = controllerTeamInfoAddress + team.name;
+              img.style.width = '3vw';
+              img.style.height = '3vw';
               link.appendChild(img);
               imgContainer.appendChild(link);
               let name = document.createElement("td");
@@ -70,12 +75,14 @@
               let loses = document.createElement("td");
               let points = document.createElement("td");
 
+              standingNum.textContent = numInTheLeaderboard.toString();
               name.textContent = team.name;
               wins.textContent = team.wins;
               draws.textContent = team.draws;
               loses.textContent = team.loses;
               points.textContent = team.points;
 
+              row.appendChild(standingNum);
               row.appendChild(imgContainer);
               row.appendChild(name);
               row.appendChild(wins);

@@ -43,6 +43,12 @@ public class TeamService {
 
     }
 
+    public TeamEntity getTeamByName(String name) {
+
+        return this.teamRepository.findByName(name).orElseThrow();
+
+    }
+
     private List<TeamStandingsDto> map(List<TeamEntity> teamEntityList) {
         return teamEntityList.stream().map(t -> mapper.map(t, TeamStandingsDto.class)).toList();
     }

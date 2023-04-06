@@ -7,6 +7,9 @@ import bg.exam.laliga.repositories.RefereeRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class RefereeService {
 
@@ -23,6 +26,14 @@ public class RefereeService {
         refereeEntity.setPosition(PositionEnum.REFEREE.name());
 
         this.refereeRepository.save(refereeEntity);
+    }
+
+    public Optional<RefereeEntity> getRefereeByName(String name) {
+        return this.refereeRepository.findByName(name);
+    }
+
+    public List<RefereeEntity> allReferees() {
+        return this.refereeRepository.findAll();
     }
 
 }

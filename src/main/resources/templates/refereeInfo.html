@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{fragments/head::head}">
+</head>
+<body style="background-image: url('/images/refereeInfoCover.jpg')" onload="getPlayerGoalsAndPasses()">
+
+<div>
+  <nav th:replace="~{fragments/navigation :: navigation}"></nav>
+</div>
+
+<div class="container">
+
+  <a href="javascript:history.back()" ><button class="btn btn-secondary">&laquo;Back</button></a>
+
+  <div class="row gx-4 justify-content-around">
+
+    <div class="col-md-6" style="background-color: rgba(45,86,152,0.8); margin: 5px; padding: 5px;">
+      <h2 class="text-center text-white mt-5"><p th:text="${referee.name} + ' ' + ${referee.lastName}"></p></h2>
+      <img alt="Player photo" class="rounded" th:src="${referee.photoUrl}" width = '250vw' height = '280vw'/>
+      <img alt="Player country flag" class="rounded" th:src="${referee.flagUrl}" width = '220vw' height = '120vw'/>
+      <h2 class="text-left text-white mt-5" th:text="'Place of birth: ' + ${referee.placeOfBirth}"></h2>
+    </div>
+
+    <div class="col-md-6" style="background-color: rgba(45,86,152,0.8); margin: 5px; padding: 5px;">
+      <h3 class="text-center text-white mt-5 font-monospace"><b>La Liga debut</b></h3>
+      <h3 class="text-left text-white mt-5 font-monospace" th:text="${referee.laLigaDebut}"></h3>
+      <h3 class="text-center text-white mt-5 font-monospace"><b>FIFA debut</b></h3>
+      <h3 class="text-left text-white mt-5 font-monospace" th:text="${referee.fifaDebut}"></h3>
+    </div>
+
+  </div>
+</div>
+
+<div>
+  <footer> </footer>
+</div>
+
+</body>
+
+</html>
