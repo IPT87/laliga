@@ -26,6 +26,9 @@ public class TeamEntity {
     @Column
     private String president;
 
+    @Column(name = "coach_name")
+    private String coachName;
+
     @Column
     private String name;
 

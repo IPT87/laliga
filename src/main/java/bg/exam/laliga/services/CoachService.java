@@ -26,4 +26,8 @@ public class CoachService {
         this.coachRepository.save(coachEntity);
     }
 
+    public CoachEntity findCoachByNameAndLastName(String name, String lastName) {
+        return this.coachRepository.findByNameAndLastName(name, lastName).orElseThrow();
+    }
+
 }

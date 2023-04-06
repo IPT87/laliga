@@ -1,18 +1,18 @@
 package bg.exam.laliga.controllers;
 
 import bg.exam.laliga.domain.dto.PlayerGoalsAndPassesDto;
+import bg.exam.laliga.domain.entities.PlayerEntity;
 import bg.exam.laliga.repositories.PlayerRepository;
 import bg.exam.laliga.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @CrossOrigin("*")
-@Controller
+@RestController
 @RequestMapping("/players")
 public class PlayerController {
 
@@ -56,6 +56,9 @@ public class PlayerController {
         return ResponseEntity.ok(this.playerService.playerGoalsAndPassesDtoList());
     }
 
-
+    @GetMapping("byTeam/{teamName}")
+    public ResponseEntity<List<PlayerEntity>> allPlayersByTeam(@PathVariable("teamName") String teamName) {
+        return ResponseEntity.ok(this.playerService.allPlayersByTeam(teamName));
+    }
 
 }

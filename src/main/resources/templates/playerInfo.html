@@ -10,9 +10,11 @@
 </div>
 
 <div class="container-fluid" style="gap: 5px;">
-  <a href="javascript:history.back()" class="back-button">Back</a>
+
+  <a href="javascript:history.back()" ><button class="btn btn-secondary">&laquo;Back</button></a>
+
   <div style="background-color: rgba(126, 161, 217, 0.8); margin: 5px; padding: 5px;">
-    <h2 class="text-center text-white mt-5">Player: <p th:text="${player.name} + ' ' + ${player.lastName} + ' ' + ${player.dorsal}"></p></h2>
+    <h2 class="text-center text-white mt-5" th:text="'Player: ' + ${player.name} + ' ' + ${player.lastName} + ' ' + ${player.dorsal}"></h2>
     <div class="d-flex flex-row bd-highlight mb-3" style="gap: 5px;">
       <div class="d-flex justify-content-start">
         <img alt="Player photo" class="rounded" th:src="${player.photoUrl}" width = '250vw' height = '290vw'/>
@@ -21,7 +23,7 @@
         <img alt="Player country flag" class="rounded" th:src="${player.flagUrl}" width = '220vw' height = '120vw'/>
       </div>
       <div class="d-flex justify-content-end" style="margin-left: auto">
-        <img alt="Team logo" th:src="${player.teamLogoUrl}" />
+        <img alt="Team logo" th:src="${player.teamLogoUrl}" width = '250vw' height = '290vw'/>
       </div>
     </div>
     <div class="d-flex flex-row bd-highlight mb-3">
@@ -47,10 +49,10 @@
     </thead>
     <tbody id="players-info-container">
     <tr th:each="p: ${player}">
-      <td th:text="${p.dateOfBirth}" />
-      <td th:text="${p.placeOfBirth}" />
-      <td th:text="${p.height} + ' ' + cm" />
-      <td th:text="${p.weight} + ' ' + kg" />
+      <td th:text="${p.dateOfBirth}"></td>
+      <td th:text="${p.placeOfBirth}"></td>
+      <td th:text="${p.height} + ' ' + cm"></td>
+      <td th:text="${p.weight} + ' ' + kg"></td>
     </tr>
     </tbody>
   </table>

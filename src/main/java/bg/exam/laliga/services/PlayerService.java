@@ -40,4 +40,8 @@ public class PlayerService {
         return this.playerRepository.findByName(name).get();
     }
 
+    public List<PlayerEntity> allPlayersByTeam(String teamName) {
+        return this.playerRepository.findAllByTeamName(teamName);
+    }
+
 }

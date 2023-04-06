@@ -11,13 +11,17 @@
 
 <div class="container-fluid">
 
-  <h2 class="text-center text-white mt-5" th:text="${team.name}"></h2>
+  <a href="javascript:history.back()" ><button class="btn btn-secondary">&laquo;Back</button></a>
+
+  <p th:text="${team.coachName}" id="coachName" style="display: none"></p>
+
+  <h2 class="text-center text-white mt-5" th:text="${team.name}" id="teamName"></h2>
 
   <div class="container">
     <div class="row gx-4 justify-content-evenly">
 
       <div class="col-lg-3 col-md-6">
-        <img class="rounded" th:src="${team.photoUrl}" alt="Club photo" id="clubPhoto" style="width: 14vw; height: 14vw">
+        <img class="rounded" th:src="${team.photoUrl}" alt="Club photo" id="clubPhoto" style="width: 13vw; height: 13vw">
       </div>
 
       <div class="col-lg-3 col-md-6">
@@ -59,10 +63,53 @@
       </div>
 
       <div class="col-lg-3 col-md-6">
-        <img class="rounded" th:src="${team.stadiumPhotoUrl}" alt="Stadium photo" id="stadiumPhoto" style="width: 27vw; height: 27vw">
+        <img class="rounded" th:src="${team.stadiumPhotoUrl}" alt="Stadium photo" id="stadiumPhoto" style="width: 25vw; height: 25vw">
       </div>
 
     </div>
+  </div>
+
+  <div class="btn-group-toggle" role="group" aria-label="Squad and coach">
+    <button type="button" class="btn btn-primary" id="squadBtn">Squad</button>
+  </div>
+
+  <div class="container-fluid" id="coach-info" style="display: none">
+
+    <h2 class="text-left text-white mt-5">Coach</h2>
+
+    <table id="coach-table" class="table table-dark table-striped">
+      <thead>
+      <tr>
+        <th></th>
+        <th class="font-monospace">NAME</th>
+        <th class="font-monospace">DATE OF BIRTH</th>
+        <th class="font-monospace">PLACE OF BIRTH</th>
+        <th class="font-monospace">POSITION</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody id="coach-container">
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="container-fluid" id="squad-info" style="display: none">
+
+    <h2 class="text-left text-white mt-5" th:text="${team.name} + ' ' + 'players'"></h2>
+
+    <table id="players-table" class="table table-dark table-striped">
+      <thead>
+      <tr>
+        <th></th>
+        <th class="font-monospace">NAME</th>
+        <th class="font-monospace">GOALS SCORED</th>
+      </tr>
+      </thead>
+      <tbody id="players-container">
+      </tbody>
+    </table>
+
   </div>
 
 </div>
@@ -70,6 +117,130 @@
 <div>
   <footer> </footer>
 </div>
+
+<script type="application/javascript">
+
+  let squadBtn = document.getElementById("squadBtn");
+
+  squadBtn.addEventListener("click", getTeamSquad);
+  squadBtn.addEventListener("click", getCoach);
+  squadBtn.addEventListener("click", showSquad);
+
+  function getTeamSquad() {
+
+    let playerControllerAddress = "http://localhost:8080/players/";
+    let teamControllerAddress = "http://localhost:8080/players/byTeam/";
+
+    let teamName = document.getElementById("teamName").innerText.valueOf();
+
+    let playersContainer = document.getElementById("players-container");
+
+    playersContainer.innerHTML = ''
+
+    let requestOptions = {
+      method: 'GET'
+    }
+
+    fetch(teamControllerAddress + teamName, requestOptions)
+            .then(response => response.json())
+            .then(json => json.forEach(player => {
+              let row = document.createElement("tr");
+
+              let name = document.createElement("td");
+              let goals = document.createElement("td");
+              let imgContainer = document.createElement("td");
+
+              let img = document.createElement("img");
+              img.src = player.photoUrl;
+              img.style.width = '5vw';
+              img.style.height = '5vw';
+
+              let link = document.createElement("a");
+              link.href = playerControllerAddress + player.name;
+              link.appendChild(img);
+
+              imgContainer.appendChild(link);
+
+              name.textContent = player.name + ' ' + player.lastName;
+              goals.textContent = player.goals;
+
+              row.appendChild(imgContainer);
+              row.appendChild(name);
+              row.appendChild(goals);
+              playersContainer.appendChild(row);
+
+            }))
+
+  }
+
+  function getCoach() {
+
+    let coachControllerAddress = "http://localhost:8080/coach/";
+
+    let coachName = document.getElementById("coachName").innerText.valueOf();
+
+    let coachContainer = document.getElementById("coach-container");
+
+    coachContainer.innerHTML = ''
+
+    let requestOptions = {
+      method: 'GET'
+    }
+
+    fetch(coachControllerAddress + coachName, requestOptions)
+            .then(response => response.json())
+            .then(coach => {
+
+              let row = document.createElement("tr");
+
+              let name = document.createElement("td");
+              let dateOfBirth = document.createElement("td");
+              let placeOfBirth = document.createElement("td");
+              let position = document.createElement("td");
+              let photoImgContainer = document.createElement("td");
+              let flagImgContainer = document.createElement("td");
+
+              let img = document.createElement("img");
+              img.src = coach.photoUrl;
+              img.style.width = '8vw';
+              img.style.height = '9vw';
+
+              photoImgContainer.appendChild(img);
+
+              let flagImg = document.createElement("img");
+              flagImg.src = coach.flagUrl;
+              flagImg.style.width = '7vw';
+              flagImg.style.height = '4vw';
+
+              flagImgContainer.appendChild(flagImg);
+
+              name.textContent = coach.name + ' ' + coach.lastName;
+              dateOfBirth.textContent = coach.dateOfBirth;
+              placeOfBirth.textContent = coach.placeOfBirth;
+              position.textContent = coach.position;
+
+              row.appendChild(photoImgContainer);
+              row.appendChild(name);
+              row.appendChild(dateOfBirth);
+              row.appendChild(placeOfBirth);
+              row.appendChild(position);
+              row.appendChild(flagImgContainer);
+              coachContainer.appendChild(row);
+
+            })
+
+  }
+
+  function showSquad() {
+    let playersTable = document.getElementById('squad-info');
+    let coachTable = document.getElementById('coach-info');
+
+    playersTable.style.display = 'table';
+    coachTable.style.display = 'table';
+
+  }
+
+</script>
 
 </body>
 

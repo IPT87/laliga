@@ -10,7 +10,10 @@
 </div>
 
 <div class="container-fluid">
-    <h2 class="text-center text-white mt-5">Stadium: <p th:text="${stadium.name}"></p></h2>
+
+    <a href="javascript:history.back()" ><button class="btn btn-secondary">&laquo;Back</button></a>
+
+    <h2 class="text-center text-white mt-5" th:text="'Stadium' + ${stadium.name}"></h2>
     <div class="d-flex flex-row bd-highlight mb-3 bg-secondary bg-gradient">
             <div class="d-flex justify-content-evenly">
                 <h3 class="text-center text-white mt-5" th:text="${stadium.info}"></h3>
