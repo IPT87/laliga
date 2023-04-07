@@ -19,18 +19,35 @@ import java.util.List;
 public class AddTeamFormDto {
     @NotNull
     private String yearOfFoundation;
+
     @NotNull
     @Size(min = 2, max = 40)
     private String president;
+
     @NotNull
     @Size(min = 2, max = 40)
     private String name;
+
     @NotNull
     @Size(min = 5, max = 30)
     private String officialWeb;
+
     @NotNull
     @Size(min = 5, max = 40)
     private String photoUrl;
+
+    @NotNull
+    @Size(min = 2, max = 50)
+    private String coachName;
+
+    @NotNull
+    @Size(min = 2, max = 30)
+    private String stadiumName;
+
+    @NotNull
+    @Size(min = 5, max = 30)
+    private String stadiumPhotoUrl;
+
     @NotNull
     @Min(value = 0)
     @Max(value = 200)

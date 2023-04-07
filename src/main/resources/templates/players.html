@@ -33,7 +33,7 @@
             <td th:text="${player.teamName}"></td>
             <td th:text="${player.goals}"></td>
             <td th:text="${player.matchesPlayed}"></td>
-            <td th:text="${player.goals} / ${player.matchesPlayed}"></td>
+            <td id="averageGoals" th:text="${player.goals} / ${player.matchesPlayed}"></td>
         </tr>
         </tbody>
     </table>
@@ -43,6 +43,21 @@
 <div>
     <footer> </footer>
 </div>
+
+<script type="text/javascript">
+
+    formatAvgGoals();
+
+    function formatAvgGoals() {
+        let avgGoalsText = document.getElementById("averageGoals");
+        let avgGoals = parseFloat(avgGoalsText.innerText.valueOf());
+console.log(avgGoalsText);
+console.log(avgGoals);
+        avgGoalsText.innerText = avgGoals.toFixed(2);
+        console.log(avgGoalsText);
+    }
+
+</script>
 
 </body>
 

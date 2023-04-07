@@ -46,24 +46,7 @@ public class UserController {
     @PostMapping("/userModify")
     public ModelAndView modifyUser(@ModelAttribute(name = "userModified") UserToModifyDto userModified) {
 
-        UserRoleEntity roleToAdd = new UserRoleEntity(userModified.getRole());
-
-        UserEntity existingUser = this.userService.getUser(userModified.getUsername());
-
-        if (userModified.getCurrentRole() != null) {
-
-            UserRoleEntity currentRole = new UserRoleEntity();
-            currentRole.setRole(UserRoleEnum.valueOf(userModified.getCurrentRole()));
-
-            existingUser.getRoles().remove(currentRole);
-
-        }
-
-        if (!existingUser.getRoles().contains(roleToAdd)) {
-            existingUser.getRoles().add((roleToAdd));
-        }
-
-        this.userService.saveUser(existingUser);
+        this.userService.changeUserRole(userModified);
 
         return allUsers();
     }

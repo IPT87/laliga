@@ -22,8 +22,4 @@ public class UserRoleEntity {
     @Enumerated(EnumType.STRING)
     private UserRoleEnum role;
 
-    public UserRoleEntity(String role) {
-        this.role = UserRoleEnum.valueOf(role);
-    }
-
 }
