@@ -3,7 +3,9 @@ package bg.exam.laliga.controllers;
 
 import bg.exam.laliga.domain.dto.UserRegisterFormDto;
 import bg.exam.laliga.services.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,7 @@ public class RegistrationController {
 
     public static final String BINDING_RESULT_PATH = "org.springframework.validation.BindingResult.";
 
+    @Autowired
     public RegistrationController(UserService userService) {
         this.userService = userService;
     }
@@ -27,24 +30,26 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String postRegister(@Valid @ModelAttribute(name = "userRegisterForm") UserRegisterFormDto userRegisterInfo,
-                               @RequestParam(name = "isSubscribed", required = false) boolean isSubscribed,
+    public String postRegister(@Valid @ModelAttribute UserRegisterFormDto userRegisterInfo,
                                BindingResult bindingResult,
-                               RedirectAttributes redirectAttributes) {
+                               RedirectAttributes redirectAttributes,
+                               HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userRegisterForm", userRegisterInfo)
                     .addFlashAttribute(BINDING_RESULT_PATH + "userRegisterForm", bindingResult);
 
-            return "redirect:register";
+            return "redirect:/users/register";
         }
 
-        if (isSubscribed) {
-            userRegisterInfo.setSubscribed(true);
+        String isUserSubscribed = request.getParameter("isSubscribed");
+
+        if (isUserSubscribed != null && userRegisterInfo.getIsSubscribed().equals("on")) {
+            userRegisterInfo.setIsSubscribed("on");
         }
 
         this.userService.registerUser(userRegisterInfo);
 
-        return "redirect:login";
+        return "redirect:/users/login";
     }
 
 

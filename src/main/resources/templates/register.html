@@ -16,45 +16,69 @@
   <form
           th:method="POST"
           th:action="@{/users/register}"
+          th:object="${userRegisterForm}"
           class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
     <div class="row">
       <div class="form-group col-md-6 mb-3">
         <label for="username" class="text-white font-weight-bold">Name</label>
         <input
+                th:field="*{username}"
+                th:errorclass="'is-invalid alert-danger'"
                 id="username"
                 name="username"
                 type="text"
                 class="form-control"
                 placeholder="Name"/>
+        <small th:if="${#fields.hasErrors('username')}" th:errorclass="error" th:errors="*{username}"
+               class="text-danger">
+        </small>
       </div>
       <div class="form-group col-md-6 mb-3">
         <label for="email" class="text-white font-weight-bold">Email</label>
-        <input id="email"
+        <input
+                th:field="*{email}"
+               th:errorclass="'is-invalid alert-danger'"
+                id="email"
                name="email"
-               type="text" min="2" max="30" class="form-control"
+               type="text" class="form-control"
                placeholder="Email"/>
+        <small th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}"
+               class="text-danger">
+        </small>
       </div>
     </div>
     <div class="row">
       <div class="form-group col-md-6 mb-3">
         <label for="password" class="text-white font-weight-bold">Password</label>
-        <input id="password"
+        <input
+                th:field="*{password}"
+                th:errorclass="'is-invalid alert-danger'"
+                id="password"
                name="password"
                type="password" min="2" max="20" class="form-control"
                placeholder="Password"/>
+        <small th:if="${#fields.hasErrors('password')}" th:errorclass="error" th:errors="*{password}"
+               class="text-danger">
+        </small>
       </div>
       <div class="form-group col-md-6 mb-3">
         <label for="confirmPassword" class="text-white font-weight-bold">Confirm password</label>
-        <input id="confirmPassword"
+        <input
+                th:field="*{confirmPassword}"
+                th:errorclass="'is-invalid alert-danger'"
+                id="confirmPassword"
                name="confirmPassword"
                type="password" min="2" max="20" class="form-control"
                placeholder="Confirm password"/>
+        <small th:if="${#fields.hasErrors('confirmPassword')}" th:errorclass="error" th:errors="*{confirmPassword}"
+               class="text-danger">
+        </small>
       </div>
     </div>
 
     <div class="row">
       <div class="form-group col-md-6 mb-3">
-        <label for="isSubscribed" value="true" class="text-white font-weight-bold">Do You want to receive LaLiga news?</label>
+        <label for="isSubscribed" class="text-white font-weight-bold">Do You want to receive LaLiga news?</label>
         <input id="isSubscribed"
                name="isSubscribed"
                type="checkbox"/>

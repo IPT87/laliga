@@ -31,7 +31,7 @@ public class UserEntity {
     private String email;
 
     @Column(name = "is_subscribed")
-    private boolean isSubscribed;
+    private String isSubscribed;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private List<UserRoleEntity> roles = new ArrayList<>();

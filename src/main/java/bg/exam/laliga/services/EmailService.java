@@ -54,7 +54,7 @@ public class EmailService {
         List<UserEntity> users = this.userService.getAllUsers();
 
         users.forEach(userEntity -> {
-            if (userEntity.isSubscribed()) {
+            if (userEntity.getIsSubscribed().equals("on")) {
                 sendEmail(userEntity.getUsername(), userEntity.getEmail());
             }
         });

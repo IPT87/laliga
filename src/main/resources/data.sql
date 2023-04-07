@@ -5,7 +5,7 @@ values
 
 INSERT INTO users (id, username, email, password, is_subscribed)
 VALUES
-    (1, 'Ivo', 'ivo@example.com', '$2a$12$pdkzgOOcEXM8IbDAENiX0OAtfABrZny/ArH8glOo8YVc8xn3CJOpa', true);
+    (1, 'Ivo', 'ivo@example.com', '$2a$12$pdkzgOOcEXM8IbDAENiX0OAtfABrZny/ArH8glOo8YVc8xn3CJOpa', 'on');
 
 
 INSERT INTO users_roles (user_entity_id, roles_id)
