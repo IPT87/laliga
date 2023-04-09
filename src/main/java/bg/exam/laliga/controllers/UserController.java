@@ -2,7 +2,6 @@ package bg.exam.laliga.controllers;
 
 import bg.exam.laliga.domain.dto.UserToModifyDto;
 import bg.exam.laliga.domain.entities.UserEntity;
-import bg.exam.laliga.domain.entities.UserRoleEntity;
 import bg.exam.laliga.domain.enums.UserRoleEnum;
 import bg.exam.laliga.services.UserService;
 import org.springframework.stereotype.Controller;

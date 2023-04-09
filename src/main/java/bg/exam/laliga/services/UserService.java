@@ -9,10 +9,10 @@ import bg.exam.laliga.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -41,7 +41,7 @@ public class UserService {
     }
 
     public UserEntity getUser(String username) {
-        return this.userRepository.findByUsername(username).orElseThrow();
+        return this.userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User with username " + username + " not found in the database!"));
     }
 
     public List<UserEntity> getAllUsers() {
@@ -62,7 +62,7 @@ public class UserService {
         UserRoleEntity roleToAdd = this.userRoleService.findUserRoleByRole(UserRoleEnum.valueOf(userModified.getRole()));
 
         UserEntity existingUser = getUser(userModified.getUsername());
-        System.out.println();
+
         if (userModified.getCurrentRole() != null) {
 
             UserRoleEntity currentRole = this.userRoleService.findUserRoleByRole(UserRoleEnum.valueOf(userModified.getCurrentRole()));
@@ -75,7 +75,7 @@ public class UserService {
             existingUser.getRoles().add((roleToAdd));
             this.userRepository.saveAndFlush(existingUser);
         }
-        System.out.println();
+
         saveUser(existingUser);
 
     }

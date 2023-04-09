@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class PlayerService {
@@ -37,7 +38,7 @@ public class PlayerService {
     }
 
     public PlayerEntity getPlayerByName(String name) {
-        return this.playerRepository.findByName(name).get();
+        return this.playerRepository.findByName(name).orElseThrow(() -> new NoSuchElementException("Player with " + name + " not found in the database!"));
     }
 
     public List<PlayerEntity> allPlayersByTeam(String teamName) {

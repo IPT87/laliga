@@ -22,7 +22,6 @@ public class CoachController {
 
     @GetMapping("/{name}")
     public ResponseEntity<CoachEntity> getCoach(@PathVariable("name") String name) {
-        System.out.println();
         String[] data = name.split(" ");
         String coachFirstName = data[0];
         String coachLastName = data[1];

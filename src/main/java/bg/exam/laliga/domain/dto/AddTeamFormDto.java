@@ -1,6 +1,5 @@
 package bg.exam.laliga.domain.dto;
 
-import bg.exam.laliga.domain.entities.PlayerEntity;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;

@@ -1,9 +1,7 @@
 package bg.exam.laliga.controllers;
 
 import bg.exam.laliga.domain.dto.*;
-import bg.exam.laliga.domain.entities.UserEntity;
 import bg.exam.laliga.domain.enums.PositionEnum;
-import bg.exam.laliga.domain.enums.UserRoleEnum;
 import bg.exam.laliga.services.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +24,14 @@ public class AdminController {
     private final RefereeService refereeService;
     private final CoachService coachService;
     private final TeamService teamService;
-    private final UserService userService;
 
     @Autowired
-    public AdminController(PlayerService playerService, StadiumService stadiumService, RefereeService refereeService, CoachService coachService, TeamService teamService, UserService userService) {
+    public AdminController(PlayerService playerService, StadiumService stadiumService, RefereeService refereeService, CoachService coachService, TeamService teamService) {
         this.playerService = playerService;
         this.stadiumService = stadiumService;
         this.refereeService = refereeService;
         this.coachService = coachService;
         this.teamService = teamService;
-        this.userService = userService;
     }
 
     @GetMapping

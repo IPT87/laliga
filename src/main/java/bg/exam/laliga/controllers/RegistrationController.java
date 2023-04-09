@@ -52,10 +52,7 @@ public class RegistrationController {
         return "redirect:/users/login";
     }
 
-
-
     // Model attributes
-
     @ModelAttribute(name = "userRegisterForm")
     public UserRegisterFormDto initUserRegisterFormDto() {
         return new UserRegisterFormDto();
