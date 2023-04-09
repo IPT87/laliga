@@ -14,22 +14,20 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-    <span id='clock'  style="color: white;"></span>
-
     <!-- Register and login -->
     <th:block sec:authorize="!isAuthenticated()">
 
       <ul class="navbar-nav mr-auto col-12 justify-content-end">
 
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/users/register}">Register</a>
+          <a class="nav-link" th:href="@{/users/register}">Register &#9997;</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/users/login}">Login</a>
+          <a class="nav-link" th:href="@{/users/login}">Login &#9756;</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/info}">Info</a>
+          <a class="nav-link" th:href="@{/info}">Info &#8520;</a>
         </li>
 
       </ul>
@@ -56,18 +54,14 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/teams/all}">Teams</a>
-        </li>
-
-        <li class="nav-item">
           <a class="nav-link" th:href="@{/players/all}">Players</a>
         </li>
 
         <li class="nav-item" sec:authorize="isAuthenticated()">
           <div class="form-inline my-2 my-lg-0 px-3">
-            <div class="text-white">Welcome, <th:block sec:authentication="name"></th:block>!</div>
+            <div class="text-white" style="margin-right: 15px;">Welcome, <th:block sec:authentication="name"></th:block>!</div>
             <form method="POST" th:action="@{/users/logout}"  class="form-inline my-2 my-lg-0 border px-3">
-              <input class="btn btn-link nav-link" type="submit" value="Logout">
+              <input class="btn btn-link nav-link" type="submit" value="Logout &rAarr;">
             </form>
           </div>
         </li>
@@ -76,19 +70,10 @@
     </th:block>
 
   </div>
+  <h5 id='clock' style="color: white;"></h5>
 </nav>
 
-<script type="text/javascript">
-
-  setInterval(myTimer, 1000);
-
-  function myTimer() {
-    let d = new Date();
-    document.getElementById("clock").innerHTML = d.toLocaleTimeString();
-  }
-
-  myTimer();
-
+<script type="text/javascript" src="/js/clock.js">
 </script>
 
 </body>

@@ -6,9 +6,8 @@
 <body style="background-image: url('/images/laLigaCover.png')">
 
 <div>
-  <nav th:replace="~{fragments/navigation :: navigation}"></nav>
+  <nav th:replace="~{fragments/navigation :: navigation}"><div id='clock' style="display: inline-block; max-width: 180px; padding: 50px; font-family: monospace, monospace"></div></nav>
 </div>
-
 <div class="container">
   <div class="row" style="bottom: 5px; padding: 5px; color: #ffffff">
     <h3>The Campeonato Nacional de Liga de Primera División, commonly known simply as Primera División in Spain,
@@ -60,8 +59,11 @@
 </div>
 
 <div>
-  <footer></footer>
+  <footer th:replace="~{fragments/footer :: footer}"></footer>
 </div>
+
+<script type="text/javascript" src="/js/clock.js">
+</script>
 
 </body>
 </html>
